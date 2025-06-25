@@ -86,7 +86,7 @@
           inputs.minegrub-theme.nixosModules.default
 
           # Entrypoint
-          ./modules/nixos-config
+          ./nixos
         ];
       };
     };
