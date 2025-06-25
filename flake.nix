@@ -36,7 +36,7 @@
     lib = nixpkgs.lib;
     pkgs = import nixpkgs {inherit system;};
 
-    custom-modules = import ./modules {inherit nixpkgs pkgs lib inputs;};
+    custom-modules = import ./modules {inherit nixpkgs pkgs inputs;};
     inherit (custom-modules) grub-themes;
 
     custom-utils = import ./utils/read-nix-recursive.nix lib;
