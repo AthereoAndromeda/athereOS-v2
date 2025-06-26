@@ -60,6 +60,7 @@ in {
         map (x: ".local/share/" + x) [
           "zoxide"
           "navi"
+          "keyrings"
         ];
 
       files = [
