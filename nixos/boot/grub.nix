@@ -17,13 +17,13 @@
       # theme = "minegrub-theme";
 
       # Play mario theme
-      extraConfig = ''
-        play 410 668 1 668 1 0 1 668 1 0 1 522 1 668 1 0 1 784 2 0 2 392 2
-      '';
+      # extraConfig = ''
+      #   play 410 668 1 668 1 0 1 668 1 0 1 522 1 668 1 0 1 784 2 0 2 392 2
+      # '';
 
       minegrub-theme = {
         enable = true;
-        splash = "100% Flakes!";
+        splash = "100% Reproducible Goodness!";
         background = "background_options/1.8  - [Classic Minecraft].png";
         boot-options-count = 4;
       };
