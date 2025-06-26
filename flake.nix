@@ -8,6 +8,11 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.1.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Blows up root on boot
     impermanence.url = "github:nix-community/impermanence";
 
@@ -50,6 +55,9 @@
         };
 
         modules = [
+          # Setup Lix
+          inputs.lix-module.nixosModules.default
+
           # Configure Nix/pkgs
           {
             nixpkgs.config.allowUnfree = true;
