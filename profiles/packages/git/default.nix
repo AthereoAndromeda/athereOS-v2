@@ -22,6 +22,7 @@
     extraConfig = {
       credential.helper = "libsecret";
       init.defaultBranch = "main";
+      submodule.recurse = true;
     };
   };
 }
