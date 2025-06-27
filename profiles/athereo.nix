@@ -76,10 +76,16 @@ in {
 
     "org/gnome/shell" = {
       welcome-dialog-last-shown-version = "999"; # prevent popup until gnome version 999 :)
-
       disable-user-extensions = false; # enables user extensions
-
       enabled-extensions = builtins.map (x: x.extensionUuid) gnome-extensions;
+
+      # Places apps on Dock
+      favorite-apps = [
+        "org.gnome.Nautilus.desktop"
+        "com.mitchellh.ghostty.desktop"
+        "zen-beta.desktop"
+        "thunderbird.desktop"
+      ];
     };
 
     "org/gnome/desktop/interface".color-scheme = "prefer-dark";
