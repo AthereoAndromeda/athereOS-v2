@@ -14,7 +14,8 @@ in {
   # NOTE: When adding a new shell, always enable the shell system-wide, even if it's already enabled in your
   # Home Manager configuration, otherwise it won't source the necessary files.
   # https://nixos.wiki/wiki/Command_Shell (2025-06-24)
-  programs.fish.enable = true;
+  # programs.fish.enable = true;
+
 
   desktop-environment.gnome.enable = true;
   bootloader.grub.enable = true;
