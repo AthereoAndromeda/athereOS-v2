@@ -125,6 +125,7 @@ in {
     bat-extras.batpipe
     bat-extras.batman
 
+    fzf
     ripgrep
     fastfetch
     nushell
