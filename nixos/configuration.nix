@@ -16,6 +16,8 @@ in {
   # https://nixos.wiki/wiki/Command_Shell (2025-06-24)
   # programs.fish.enable = true;
 
+  # Takes way too much time building man caches each rebuild
+  documentation.man.generateCaches = false;
 
   desktop-environment.gnome.enable = true;
   bootloader.grub.enable = true;
