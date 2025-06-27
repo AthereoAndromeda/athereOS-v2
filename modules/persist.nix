@@ -61,6 +61,7 @@ in {
           "zoxide"
           "navi"
           "keyrings"
+          "Trash"
         ];
 
       files = [
