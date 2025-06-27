@@ -23,30 +23,31 @@ in {
     xdg-desktop-portal-termfilechooser
   ];
 
-  # xdg.portal.config = {
-  #   common = {
-  #     default = [
-  #       "gtk"
-  #     ];
+  xdg.portal.config = {
+    common = {
+      default = [
+        "gnome"
+      ];
 
-  #     "org.freedesktop.impl.portal.FileChooser" = "termfilechooser";
-  #   };
-  #   pantheon = {
-  #     default = [
-  #       "pantheon"
-  #       "gtk"
-  #     ];
-  #     "org.freedesktop.impl.portal.Secret" = [
-  #       "gnome-keyring"
-  #     ];
-  #   };
-  #   x-cinnamon = {
-  #     default = [
-  #       "xapp"
-  #       "gtk"
-  #     ];
-  #   };
-  # };
+      "org.freedesktop.impl.portal.FileChooser" = "termfilechooser";
+      "org.freedesktop.impl.portal.Secret" = "gnome-keyring";
+    };
+    # pantheon = {
+    #   default = [
+    #     "pantheon"
+    #     "gtk"
+    #   ];
+    #   "org.freedesktop.impl.portal.Secret" = [
+    #     "gnome-keyring"
+    #   ];
+    # };
+    # x-cinnamon = {
+    #   default = [
+    #     "xapp"
+    #     "gtk"
+    #   ];
+    # };
+  };
 
   home.stateVersion = "25.05";
   home.homeDirectory = "/home/athereo";
