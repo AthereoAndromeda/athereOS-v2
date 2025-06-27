@@ -14,6 +14,13 @@
       br = "branch";
       sw = "switch";
       ch = "checkout";
+      unstage = "restore -S";
+      discard = "restore -S -W";
+      uncommit = "reset --soft HEAD^";
+      dic = "diff --cached";
+
+      lol = "log --graph --decorate --pretty=oneline --abbrev-commit";
+      lola = "log --graph --decorate --pretty=oneline --abbrev-commit --all";
     };
 
     # Better diff view
