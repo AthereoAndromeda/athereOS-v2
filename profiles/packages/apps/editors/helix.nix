@@ -3,6 +3,19 @@
     enable = true;
     defaultEditor = true;
 
+    languages = {
+      language-server.just-lsp = {
+        command = "just-lsp";
+      };
+
+      language = [
+        {
+          name = "just";
+          language-servers = ["just-lsp"];
+        }
+      ];
+    };
+
     settings = {
       theme = "ao";
 
