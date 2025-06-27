@@ -119,6 +119,13 @@ in {
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
+    bat
+    bat-extras.batgrep
+    bat-extras.batwatch
+    bat-extras.batpipe
+    bat-extras.batman
+
+    ripgrep
     fastfetch
     nushell
     ghostty
