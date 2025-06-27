@@ -29,6 +29,9 @@
 
     xremap.url = "github:xremap/nix-flake";
     xremap.inputs.nixpkgs.follows = "nixpkgs";
+
+    xdg-termfilepickers.url = "github:guekka/xdg-desktop-portal-termfilepickers";
+    xdg-termfilepickers.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -55,6 +58,8 @@
         };
 
         modules = [
+          inputs.xdg-termfilepickers.nixosModules.default
+
           # Setup Lix
           inputs.lix-module.nixosModules.default
 

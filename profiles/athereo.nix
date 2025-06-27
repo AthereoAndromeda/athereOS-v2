@@ -14,6 +14,7 @@
 in {
   imports = [
     ./packages # Auto-imports all .nix files in packages/
+    inputs.xdg-termfilepickers.homeManagerModules.default
   ];
 
   # TODO: fix XDG Portals
@@ -29,24 +30,18 @@ in {
         "gnome"
       ];
 
-      "org.freedesktop.impl.portal.FileChooser" = "termfilechooser";
       "org.freedesktop.impl.portal.Secret" = "gnome-keyring";
     };
-    # pantheon = {
-    #   default = [
-    #     "pantheon"
-    #     "gtk"
-    #   ];
-    #   "org.freedesktop.impl.portal.Secret" = [
-    #     "gnome-keyring"
-    #   ];
-    # };
-    # x-cinnamon = {
-    #   default = [
-    #     "xapp"
-    #     "gtk"
-    #   ];
-    # };
+  };
+
+  services.xdg-desktop-portal-termfilepickers = let
+    termfilepickers = inputs.xdg-termfilepickers.packages.${pkgs.system}.default;
+  in {
+    enable = true;
+    package = termfilepickers;
+    config = {
+      terminal_command = lib.getExe pkgs.kitty;
+    };
   };
 
   home.stateVersion = "25.05";
