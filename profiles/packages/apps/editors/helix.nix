@@ -4,14 +4,25 @@
     defaultEditor = true;
 
     languages = {
-      language-server.just-lsp = {
-        command = "just-lsp";
+      language-server = {
+        just-lsp = {
+          command = "just-lsp";
+        };
+
+        luau-lsp = {
+          command = "luau-lsp analyze";
+        };
       };
 
       language = [
         {
           name = "just";
           language-servers = ["just-lsp"];
+        }
+
+        {
+          name = "luau";
+          language-servers = ["luau-lsp"];
         }
       ];
     };
