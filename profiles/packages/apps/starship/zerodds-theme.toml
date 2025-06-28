@@ -1,0 +1,77 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+add_newline = false
+format = """
+[╭](fg:white) [](#ffffff)[ $os ](fg:#3a9efd bg:white)[ ](#ffffff)$username$directory$all$line_break$character"""
+
+right_format = """$cmd_duration$git_branch$git_state$git_status$time"""
+
+palette = "purplish"
+
+[palettes.purplish]
+white = "#ffffff"
+# purple1 = "#"
+
+[os]
+format = "$symbol"
+disabled = false
+
+[os.symbols]
+Alpine = ''
+Amazon = ''
+Android = ''
+Arch = '󰣇'
+CentOS = ''
+Debian = ''
+EndeavourOS = ''
+Fedora = ''
+FreeBSD = ''
+Garuda = ''
+Gentoo = ''
+Linux = ''
+Macos = ''
+Manjaro = ''
+Mariner = ''
+Mint = ''
+NetBSD = ''
+NixOS = ''
+OpenBSD = ''
+OpenCloudOS = ''
+openEuler = ''
+openSUSE = ''
+OracleLinux = '⊂⊃'
+Pop = ''
+Raspbian = ''
+Redhat = ''
+RedHatEnterprise = ''
+Solus = ''
+SUSE = ''
+Ubuntu = ''
+Unknown = ''
+Windows = ''
+
+[character]
+success_symbol = "[╰─❯](#ffffff)"
+error_symbol = "[╰─×](#ff0000)"
+
+[cmd_duration]
+min_time = 500
+format = '(fg:current_line)[](fg:orange)[  ](fg:primary bg:orange)[](fg:orange bg:box)[ $duration ](fg:foreground bg:box)[](fg:box)'
+
+[git_branch]
+format = "[ $symbol $branch ]($style) "
+symbol = ""
+style = "#00ff00"
+
+[directory]
+format = "[](#3a9efd)[$path]($style)[ ](#3a9efd)"
+style = "fg:#ffffff bg:#3a9efd"
+truncate_to_repo=false
+
+[username]
+style_user = "#3a9efd"
+show_always = true
+
+[time]
+format = "[$time](#ffff00)"
+time_format = "%a, %I:%M %p"
+disabled = false
