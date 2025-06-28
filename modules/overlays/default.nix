@@ -2,13 +2,10 @@
   nixpkgs,
   pkgs,
   inputs,
+  custom-utils,
   ...
-}: let
-  inherit (builtins) filter map toString toPath;
-  inherit (nixpkgs.lib.filesystem) listFilesRecursive;
-  inherit (nixpkgs.lib.strings) hasSuffix;
-in {
-  nixpkgs.overlays = map (x: import (toPath x) {inherit pkgs inputs;}) (filter (hasSuffix ".nix") (
-    map toString (filter (p: p != ./default.nix) (listFilesRecursive ./.))
-  ));
+}: {
+  nixpkgs.overlays = map (f: import (builtins.toPath f) {inherit pkgs inputs;}) (
+    custom-utils.list-nix-files (p: p != ./default.nix) ./.
+  );
 }

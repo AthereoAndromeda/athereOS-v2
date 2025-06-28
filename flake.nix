@@ -44,10 +44,9 @@
     lib = nixpkgs.lib;
     pkgs = import nixpkgs {inherit system;};
 
-    custom-modules = import ./modules {inherit nixpkgs pkgs inputs;};
+    custom-utils = import ./utils {inherit lib;};
+    custom-modules = import ./modules {inherit nixpkgs pkgs inputs custom-utils;};
     inherit (custom-modules) grub-themes;
-
-    custom-utils = import ./utils/read-nix-recursive.nix lib;
   in {
     nixosConfigurations = {
       athereo-lenovo-nixos = lib.nixosSystem {
@@ -91,7 +90,7 @@
             home-manager.users.athereo = import ./profiles/athereo.nix;
 
             home-manager.extraSpecialArgs = {
-              inherit inputs; # Don't pass NixOS lib, home-manager provides its own
+              inherit inputs custom-utils; # Don't pass NixOS lib, home-manager provides its own
             };
           }
 
