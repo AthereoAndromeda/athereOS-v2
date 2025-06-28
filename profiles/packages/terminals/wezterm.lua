@@ -1,5 +1,9 @@
+local wezterm = require 'wezterm'
 
-return {
-  -- ...your existing config
-  color_scheme = "Catppuccin Mocha", -- or Macchiato, Frappe, Latte
-}
+local config = wezterm.config_builder()
+config.color_scheme = "Catppuccin Mocha"
+config.window_decorations = "INTEGRATED_BUTTONS"
+config.enable_wayland = true
+config.integrated_title_button_style = "Gnome"
+
+return config
