@@ -23,6 +23,14 @@
         {
           name = "luau";
           language-servers = ["luau-lsp"];
+          scope = "scope.luau";
+          file-types = ["luau"];
+          comment-tokens = "--";
+          indent = {
+            tab-width = 4;
+            unit = "    ";
+          };
+        }
         }
       ];
     };
