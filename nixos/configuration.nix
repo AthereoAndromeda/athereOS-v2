@@ -22,12 +22,6 @@ in {
   desktop-environment.gnome.enable = true;
   bootloader.grub.enable = true;
 
-  # services.auto-cpufreq.enable = true;
-  hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
-  hardware.enableAllHardware = true;
-  hardware.enableRedistributableFirmware = true;
-
   # Note, if you use the NixOS module and have useUserPackages = true, make sure to add
   environment.pathsToLink = [
     "/share/xdg-desktop-portal"
@@ -37,12 +31,6 @@ in {
   ];
 
   environment.shells = [pkgs.bashInteractive pkgs.nushell];
-
-  # security.pki.certificates = [
-  #   # Workaround to avoid impurity
-  #   (builtins.readFile ./assets/upd_dilnet.pem)
-  #   (builtins.readFile ./assets/upd_eduroam.pem)
-  # ];
 
   services.gnome.gnome-keyring.enable = true;
   programs.seahorse.enable = true;
@@ -106,19 +94,6 @@ in {
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.mutableUsers = false;
-  users.users.athereo = {
-    isNormalUser = true;
-    extraGroups = ["wheel" "libvirtd"]; # Enable ‘sudo’ for the user.
-    shell = pkgs.nushell;
-    # useDefaultShell = false;
-
-    hashedPasswordFile = "/persist/password/athereo";
-  };
-
-  # programs.firefox.enable = true;
-
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
@@ -146,15 +121,6 @@ in {
 
   programs.zoxide.enable = true;
   programs.zoxide.enableBashIntegration = true;
-
-  services.vaultwarden.enable = true;
-  services.vaultwarden.config = {
-    DOMAIN = "http://localhost";
-    ROCKET_ADDRESS = "0.0.0.0";
-    ROCKET_PORT = 8222;
-
-    ROCKET_LOG = "critical";
-  };
 
   hardware.sensor.iio.enable = true;
   services.sysprof.enable = true;
