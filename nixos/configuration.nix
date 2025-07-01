@@ -94,33 +94,9 @@ in {
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
-  # List packages installed in system profile.
-  # You can use https://search.nixos.org/ to find more packages (and options).
-  environment.systemPackages = with pkgs; [
-    wezterm
-    kitty
-    fzf
-    ripgrep
-    fastfetch
-    nushell
-    ghostty
-    xh
-    alejandra
-    just
-    just-lsp
-    wget
-    firefox
-    helix
-    nixd
-    git
-  ];
-
   services.udev.packages = with pkgs; [
     gnome-settings-daemon
   ];
-
-  programs.zoxide.enable = true;
-  programs.zoxide.enableBashIntegration = true;
 
   hardware.sensor.iio.enable = true;
   services.sysprof.enable = true;
