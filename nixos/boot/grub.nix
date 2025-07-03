@@ -24,7 +24,7 @@
       minegrub-theme = {
         enable = true;
         splash = "100% Reproducible Goodness!";
-        background = "background_options/1.8  - [Classic Minecraft].png";
+        background = "background_options/1.20 - [Trails & Tales].png";
         boot-options-count = 4;
       };
     };
