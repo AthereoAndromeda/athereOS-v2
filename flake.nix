@@ -27,6 +27,9 @@
 
     xdg-termfilepickers.url = "github:guekka/xdg-desktop-portal-termfilepickers";
     xdg-termfilepickers.inputs.nixpkgs.follows = "nixpkgs";
+
+    legacy-launcher.url = "github:AthereoAndromeda/legacy-launcher-nix";
+    legacy-launcher.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -35,9 +38,15 @@
     home-manager,
     ...
   } @ inputs: let
+    inherit (nixpkgs) lib;
     system = "x86_64-linux";
-    lib = nixpkgs.lib;
-    pkgs = import nixpkgs {inherit system;};
+
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+      config.allowUnfreePredicate = pkg: true;
+      # overlays = []; # WARN: This does not appear to work with home-manager
+    };
 
     custom-utils = import ./utils {inherit lib;};
     custom-modules = import ./modules {inherit nixpkgs pkgs inputs custom-utils;};
@@ -56,7 +65,9 @@
 
           # Configure Nix/pkgs
           {
-            nixpkgs.config.allowUnfree = true;
+            nixpkgs.overlays = [
+              inputs.legacy-launcher.overlays.legacy-launcher
+            ];
             nix.settings.experimental-features = ["nix-command" "flakes"];
           }
 

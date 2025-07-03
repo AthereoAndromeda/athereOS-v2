@@ -500,6 +500,26 @@
         "type": "github"
       }
     },
+    "legacy-launcher": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1751541969,
+        "narHash": "sha256-y4YQkxb1Sp465WAypu5lbVJb/RqX+E1ctjdra4wc0GM=",
+        "owner": "AthereoAndromeda",
+        "repo": "legacy-launcher-nix",
+        "rev": "3d708bef8bb5db0ad81c0e8c8c6c2de3833aac5e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AthereoAndromeda",
+        "repo": "legacy-launcher-nix",
+        "type": "github"
+      }
+    },
     "minegrub-theme": {
       "inputs": {
         "nixpkgs": "nixpkgs"
@@ -701,6 +721,7 @@
       "inputs": {
         "home-manager": "home-manager",
         "impermanence": "impermanence",
+        "legacy-launcher": "legacy-launcher",
         "minegrub-theme": "minegrub-theme",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
