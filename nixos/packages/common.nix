@@ -18,5 +18,6 @@
     helix
     nixd
     git
+    mpv
   ];
 }
