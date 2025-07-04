@@ -19,5 +19,11 @@
     nixd
     git
     mpv
+    xcp
+    mask
+    sttr
+    binsider
+    posting
+    television
   ];
 }
