@@ -507,11 +507,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1751541969,
-        "narHash": "sha256-y4YQkxb1Sp465WAypu5lbVJb/RqX+E1ctjdra4wc0GM=",
+        "lastModified": 1751548677,
+        "narHash": "sha256-CN/AiWVOKT6y0KCHAuJYo7w8Z2dbAPII2gJ6vTGPUxQ=",
         "owner": "AthereoAndromeda",
         "repo": "legacy-launcher-nix",
-        "rev": "3d708bef8bb5db0ad81c0e8c8c6c2de3833aac5e",
+        "rev": "b937f7d7b9959e05ea3f431e75acefcecd1d4cad",
         "type": "github"
       },
       "original": {

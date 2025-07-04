@@ -10,6 +10,7 @@
     just-perfection
     appindicator
     dash-to-dock
+    tiling-shell
   ];
 in {
   imports = [
