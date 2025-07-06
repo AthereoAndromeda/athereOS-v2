@@ -54,6 +54,7 @@ in {
         map (x: ".config/" + x) [
           "kryptor"
           "age"
+          "vesktop"
         ]
         ++
         # .local/share dirs
