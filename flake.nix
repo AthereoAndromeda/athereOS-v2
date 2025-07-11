@@ -91,6 +91,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.athereo = import ./profiles/athereo.nix;
+            home-manager.backupFileExtension = "hm-bak";
 
             home-manager.extraSpecialArgs = {
               inherit inputs custom-utils; # Don't pass NixOS lib, home-manager provides its own
