@@ -1,0 +1,4 @@
+% ffmpeg, video
+
+# Transcode a video to AV1 + Opus
+ffmpeg -i <video_file> -c:v libsvtav1 -c:a libopus -b:a 64k -crf <crf_value> <out_file>
