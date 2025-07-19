@@ -58,6 +58,7 @@ in {
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       show-battery-percentage = true;
+      enable-hot-corners = false;
     };
 
     "org/gnome/desktop/background" = {
