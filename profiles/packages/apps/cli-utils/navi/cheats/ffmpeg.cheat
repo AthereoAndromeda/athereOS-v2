@@ -2,3 +2,8 @@
 
 # Transcode a video to AV1 + Opus
 ffmpeg -i <video_file> -c:v libsvtav1 -c:a libopus -b:a 64k -crf <crf_value> <out_file>
+
+% ffmepg, audio
+
+# Change volume level
+ffmpeg -i <file> -c:v copy -filter:a "volume=<vol>" out-<file>
