@@ -55,6 +55,7 @@ in {
           "kryptor"
           "age"
           "vesktop"
+          "direnv"
         ]
         ++
         # .local/share dirs
