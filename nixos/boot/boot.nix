@@ -12,6 +12,13 @@
       # so we can manipulate btrfs subvolumes.
       mount -o subvol=/ /dev/nvme0n1p5 /mnt
 
+      # Backup old root
+      if [[ -e /mnt/root ]]; then
+        mkdir -p /mnt/old_roots
+        timestamp=$(date --date="@$(stat -c %Y /mnt/root)" "+%Y-%m-%-d_%H:%M:%S")
+        mv /mnt/root "/mnt/old_roots/$timestamp"
+      fi
+
       # While we're tempted to just delete /root and create
       # a new snapshot from /root-blank, /root is already
       # populated at this point with a number of subvolumes,
@@ -21,12 +28,6 @@
       # /root contains subvolumes:
       # - /root/var/lib/portables
       # - /root/var/lib/machines
-      #
-      # I suspect these are related to systemd-nspawn, but
-      # since I don't use it I'm not 100% sure.
-      # Anyhow, deleting these subvolumes hasn't resulted
-      # in any issues so far, except for fairly
-      # benign-looking errors from systemd-tmpfiles.
       btrfs subvolume list -o /mnt/root |
       cut -f9 -d' ' |
       while read subvolume; do
@@ -38,6 +39,20 @@
 
       echo "restoring blank /root subvolume..."
       btrfs subvolume snapshot /mnt/root-blank /mnt/root
+
+      delete_subvolume_recursively() {
+        IFS=$'\n'
+        for i in $(btrfs subvolume list -o "$1" | cut -f 9- -d ' '); do
+            delete_subvolume_recursively "/mnt/$i"
+        done
+        btrfs subvolume delete "$1"
+      }
+
+
+      # Delete roots older than 7 days
+      for i in $(find /btrfs_tmp/old_roots/ -maxdepth 1 -mtime +7); do
+        delete_subvolume_recursively "$i"
+      done
 
       # Once we're done rolling back to a blank snapshot,
       # we can unmount /mnt and continue on the boot process.
