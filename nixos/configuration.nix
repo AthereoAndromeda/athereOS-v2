@@ -58,6 +58,8 @@ in {
 
   # Set your time zone.
   time.timeZone = "Asia/Manila";
+  # Prevents dual boot Windows getting wrong time
+  time.hardwareClockInLocalTime = true;
 
   security.sudo.extraConfig = ''
     # rollback results in sudo lectures after each reboot
