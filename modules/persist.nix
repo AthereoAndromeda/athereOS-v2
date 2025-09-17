@@ -48,6 +48,7 @@ in {
           ".zen"
           ".gnupg"
           ".ssh"
+          ".minecraft"
         ]
         ++
         # Config dirs
