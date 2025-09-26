@@ -40,14 +40,7 @@
   } @ inputs: let
     inherit (nixpkgs) lib;
     system = "x86_64-linux";
-
-    pkgs = import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-      config.allowUnfreePredicate = pkg: true;
-      # overlays = []; # WARN: This does not appear to work with home-manager
-    };
-
+    pkgs = import nixpkgs {inherit system;};
     custom-utils = import ./utils {inherit lib;};
     custom-modules = import ./modules {inherit nixpkgs pkgs inputs custom-utils;};
     inherit (custom-modules) grub-themes;
@@ -68,6 +61,13 @@
             nixpkgs.overlays = [
               inputs.legacy-launcher.overlays.legacy-launcher
             ];
+
+            # Allow a select number of unfree pkgs
+            nixpkgs.config.allowUnfreePredicate = pkg:
+              builtins.elem (lib.getName pkg) [
+                "obsidian"
+              ];
+
             nix.settings.experimental-features = ["nix-command" "flakes"];
           }
 
