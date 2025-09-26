@@ -74,9 +74,8 @@
           # Setup nixos-hardware
           inputs.nixos-hardware.nixosModules.lenovo-ideapad-16ahp9
 
-          # Setup impermanence
+          # Setup impermanence and persistent storage
           inputs.impermanence.nixosModules.impermanence
-          # Setup persistent storage
           custom-modules.persist
 
           # Add custom overlays
@@ -87,16 +86,7 @@
 
           # Setup home-manager
           home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.athereo = import ./profiles/athereo.nix;
-            home-manager.backupFileExtension = "hm-bak";
-
-            home-manager.extraSpecialArgs = {
-              inherit inputs custom-utils; # Don't pass NixOS lib, home-manager provides its own
-            };
-          }
+          (import ./profiles/home-manager.nix inputs custom-utils)
 
           # Add MineGrub Theme
           inputs.minegrub-theme.nixosModules.default
