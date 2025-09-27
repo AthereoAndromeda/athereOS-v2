@@ -19,7 +19,7 @@ in {
   # Takes way too much time building man caches each rebuild
   documentation.man.generateCaches = false;
 
-  desktop-environment.gnome.enable = true;
+  # desktop-environment.gnome.enable = true;
   bootloader.grub.enable = true;
 
   # Note, if you use the NixOS module and have useUserPackages = true, make sure to add

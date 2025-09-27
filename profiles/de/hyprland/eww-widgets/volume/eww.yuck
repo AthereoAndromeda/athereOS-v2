@@ -1,0 +1,36 @@
+(defwindow example
+           :monitor 0
+           :geometry (geometry :x "0%"
+                               :y "5px"
+                               :width "90%"
+                               :height "10px"
+                               :anchor "top center")
+           :stacking "overlay"
+           ; :reserve (struts :distance "40px" :side "top")
+           :windowtype "dock"
+           :exclusive "true"
+           :focusable "ondemand"
+           
+  (greeter :text "Sup bitch"
+           :name "amognus"))
+
+(defwidget greeter [?text name]
+  (box :orientation "horizontal"
+       :halign "center"
+    text
+    (button :onclick "notify-send 'Hello' 'Hello, ${name}'"
+      "Greet")))
+
+(defwindow volume
+          :monitor 0
+          :class "volume-window"
+          :geometry (geometry :x "0%"
+                              :y "80px"
+                              :width "30%"
+                              :height "30px"
+                              :anchor "bottom center")
+          :stacking "overlay"
+          :exclusive "false"
+
+  (box :class "volume-bar" 
+      (label :text "bitch")))
