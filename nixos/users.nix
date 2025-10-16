@@ -3,9 +3,13 @@
   users.mutableUsers = false;
   users.users.athereo = {
     isNormalUser = true;
-    extraGroups = ["wheel" "libvirtd"]; # Enable ‘sudo’ for the user.
     shell = pkgs.nushell;
     # useDefaultShell = false;
+    extraGroups = [
+      "wheel"
+      "libvirtd"
+      "dialout"
+    ];
 
     hashedPasswordFile = "/persist/password/athereo";
   };
