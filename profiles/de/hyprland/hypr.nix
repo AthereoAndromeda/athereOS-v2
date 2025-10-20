@@ -1,4 +1,7 @@
 {...}: {
+  imports = [
+    ./hypr-utils/hyprlock/hyprlock.nix
+  ];
   services.hyprpolkitagent.enable = true;
 
   wayland.windowManager.hyprland = {
