@@ -48,9 +48,8 @@
         btrfs subvolume delete "$1"
       }
 
-
       # Delete roots older than 7 days
-      for i in $(find /btrfs_tmp/old_roots/ -maxdepth 1 -mtime +7); do
+      for i in $(find /mnt/old_roots/ -maxdepth 1 -mtime +7); do
         delete_subvolume_recursively "$i"
       done
 
