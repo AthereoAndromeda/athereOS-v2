@@ -1,0 +1,24 @@
+@use "sass:color";
+@use "colors" as *;
+@use "notifications";
+@use "widgets";
+
+
+.control-center {
+  background: #00000044;
+  /* background: alpha($bg, 0.9); */
+  border-radius: 20px;
+
+  &-list {
+    background: transparent;
+
+    &-placeholder {
+      opacity: 0.1;
+    }
+  }
+}
+
+/* Window behind control center and on all other monitors */
+.blank-window {
+  background: color.change(black, $alpha: 0.3);
+}

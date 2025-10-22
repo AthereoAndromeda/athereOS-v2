@@ -2,29 +2,36 @@
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
+    # CLI Utils
+    fd
+    btop
     caligula
-    wezterm
-    kitty
     fzf
     ripgrep
+    xh
+    just
+    just-lsp
+    mask
+    sttr
+
+    # TUI
+    wezterm
+    kitty
     fastfetch
     nushell
     ghostty
-    xh
-    alejandra
-    just
-    just-lsp
     wget
     firefox
     helix
-    nixd
     git
     mpv
     xcp
-    mask
-    sttr
     binsider
     posting
-    television
   ];
+
+  programs.television = {
+    enable = true;
+    enableBashIntegration = true;
+  };
 }

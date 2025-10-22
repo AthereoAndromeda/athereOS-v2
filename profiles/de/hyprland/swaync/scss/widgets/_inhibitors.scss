@@ -1,0 +1,21 @@
+@use "../colors" as *;
+
+/* Inhibitors widget */
+.widget-inhibitors {
+  margin: 8px;
+  font-size: 1.5rem;
+
+  >button {
+    font-size: initial;
+    color: $foreground;
+    text-shadow: none;
+    background: $background;
+    border: 1px solid $color6;
+    box-shadow: none;
+    border-radius: 12px;
+
+    &:hover {
+      background: pink;
+    }
+  }
+}

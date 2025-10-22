@@ -1,0 +1,156 @@
+@use "colors" as *;
+
+@mixin invert-colors($bg, $fg, $inverted: false) {
+  @if $inverted {
+    background: $bg;
+    color: $fg;
+  }
+
+  @else {
+    background: $fg;
+    color: $bg;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.floating-notifications {
+  margin: {
+    right: 15px;
+    top: 10px;
+  }
+
+  padding: 0;
+}
+
+.notification-row {
+  outline: none;
+  margin: 20;
+  padding: 20;
+  /* BellotaText 13, Comfortaa 13, Jura 14, montserrat alternates 13 */
+  font: 1em "Jetbrains Mono Nerd Font";
+  border-radius: 10px;
+  transition: 300ms;
+
+  &:focus,
+  &:hover {
+    background: #FFFFFF44;
+    border: 1px dimgray ridge;
+    transition: 300ms;
+  }
+}
+
+
+.notification {
+  margin: 6px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.7),
+    0 2px 6px 2px rgba(0, 0, 0, 0.3);
+  border-radius: 0 80px 0 25px;
+  /* background: alpha(@background, .8); */
+  background: #00000044;
+}
+
+.low {
+  border: 1px solid $color3;
+  background-image: linear-gradient(45deg, #E056FD, rgba(0, 0, 0, 0));
+}
+
+.normal {
+  /* background-color: #e056fd; */
+  background-image: linear-gradient(45deg, #e056fd 0%, #000000 74%);
+  border: 1.5px solid #575D85;
+  background: $base00;
+  /* border: 1.5px solid $base07; */
+}
+
+.critical {
+  /* background: #00000044; */
+  background-image: linear-gradient(45deg, #E056FD 0%, #8B0000 74%);
+  border: 3px solid #8B0000;
+  color: #000000;
+}
+
+.notification-group {
+  background: transparent;
+  border: 1px;
+  border-color: #00000066;
+}
+
+.notification-content {
+  padding: 10px 5px;
+  /* background: black; */
+  border-radius: 0 80px 0 25px;
+}
+
+.close-button {
+  margin-right: 15px;
+  $bg-color: black;
+  $fg-color: white;
+  background: $bg-color;
+  color: $fg-color;
+
+  border: 1.5px lightgray {
+    style: dashed;
+    radius: 50%;
+  }
+
+  &:hover {
+    background: $fg-color;
+    color: $bg-color;
+    border-color: black;
+  }
+}
+
+/* yet another useless wrapper */
+.notification-default-action,
+.notification-action,
+.notification-default-action:hover,
+.notification-action:hover {
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  background: transparent;
+  border: none;
+}
+
+.image {
+  margin-right: 7px;
+}
+
+.body-image {
+  margin-top: 6px;
+  background-color: white;
+  border-radius: 12px;
+}
+
+.summary {
+  font-size: 1.2em;
+  font-weight: bold;
+  background: transparent;
+  color: $color3;
+  text-shadow: none;
+
+}
+
+.time {
+  color: $color8;
+  margin-right: 45px;
+  margin-bottom: 5px;
+
+  font: {
+    size: 1.2em;
+    weight: normal;
+    style: italic;
+  }
+}
+
+.body {
+  font-size: 10pt;
+  font-weight: normal;
+  padding-right: 5px;
+  /* background: transparent; */
+  /* color: $foreground; */
+}

@@ -1,0 +1,33 @@
+@use "../colors" as *;
+
+/* Mpris widget */
+.widget-mpris {
+  /* The parent to all players */
+  /* color: @foreground; */
+  background: blue;
+  margin: 0;
+  padding: 0;
+
+  &-player {
+    padding: 10px;
+    /* margin: 80px; */
+    /* color: $foreground; */
+    color: white;
+    /* padding-bottom: 0; */
+    /* margin-bottom: 0; */
+  }
+
+  &-title {
+    font-weight: bold;
+    font-size: 1.25rem;
+    /* color: $foreground; */
+    color: white;
+    letter-spacing: 1px;
+    font: bold 1em "Jetbrains Nerd Font Mono";
+  }
+
+  &-subtitle {
+    font-size: 1;
+    color: $foreground;
+  }
+}
