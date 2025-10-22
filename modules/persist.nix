@@ -57,6 +57,7 @@ in {
           "age"
           "vesktop"
           "direnv"
+          "obsidian"
         ]
         ++
         # .local/share dirs
