@@ -13,6 +13,9 @@
     ./de/hyprland/hypr.nix
   ];
 
+  # Enable base dirs
+  xdg.enable = true;
+
   # TODO: fix XDG Portals
   xdg.portal.enable = true;
   xdg.portal.extraPortals = with pkgs; [
