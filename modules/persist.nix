@@ -66,6 +66,7 @@ in {
           "navi"
           "keyrings"
           "Trash"
+          "direnv"
         ];
 
       files = [
