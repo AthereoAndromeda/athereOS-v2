@@ -44,6 +44,7 @@ in {
           "Documents"
           "Pictures"
           "Videos"
+          "Music"
 
           ".zen"
           ".gnupg"
