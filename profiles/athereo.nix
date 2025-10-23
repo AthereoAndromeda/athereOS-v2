@@ -8,9 +8,12 @@
   imports = [
     ./packages # Auto-imports all .nix files in packages/
     inputs.xdg-termfilepickers.homeManagerModules.default
+    inputs.mango.hmModules.mango
 
     # ./de/gnome/dconf.nix
-    ./de/hyprland/hypr.nix
+    # ./de/hyprland/hypr.nix
+    ./de/common
+    ./de/mango/mango.nix
   ];
 
   # Enable base dirs

@@ -30,6 +30,9 @@
 
     legacy-launcher.url = "github:AthereoAndromeda/legacy-launcher-nix";
     legacy-launcher.inputs.nixpkgs.follows = "nixpkgs";
+
+    mango.url = "github:DreamMaoMao/mango";
+    mango.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -55,6 +58,9 @@
 
         modules = [
           inputs.xdg-termfilepickers.nixosModules.default
+
+          # Add mango nixos module
+          inputs.mango.nixosModules.mango
 
           # Configure Nix/pkgs
           {
