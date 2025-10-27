@@ -10,12 +10,14 @@ in {
       map (x: "/var/lib/" + x) [
         "nixos"
         "vaultwarden"
+        "greetd"
       ]
       ++
       # /etc dirs
       map (x: "/etc/" + x) [
         "nixos"
         "NetworkManager"
+        "greetd"
       ];
 
     files =
