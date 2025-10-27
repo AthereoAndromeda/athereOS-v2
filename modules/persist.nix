@@ -40,6 +40,10 @@ in {
             directory = "athereOS-v2";
             mode = "0755";
           }
+          {
+            directory = ".config/obsidian";
+            mode = "0755";
+          }
           "Downloads"
           "Documents"
           "Pictures"
@@ -58,7 +62,6 @@ in {
           "age"
           "vesktop"
           "direnv"
-          "obsidian"
         ]
         ++
         # .local/share dirs
