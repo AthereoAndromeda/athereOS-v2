@@ -55,6 +55,8 @@
     zen-browser
     xh
     fend
+    grim
+    slurp
   ];
 
   programs.thunderbird = {
