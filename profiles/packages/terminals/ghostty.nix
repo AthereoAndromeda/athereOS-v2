@@ -6,6 +6,7 @@
 
     settings = {
       theme = "catppuccin-mocha";
+      background-opacity = 0.85;
     };
 
     themes = {
