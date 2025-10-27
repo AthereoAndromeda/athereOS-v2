@@ -10,6 +10,8 @@ in {
       map (x: "/var/lib/" + x) [
         "nixos"
         "vaultwarden"
+        "bluetooth"
+        "cups"
         "greetd"
       ]
       ++
