@@ -14,7 +14,7 @@
       efiSupport = true;
       device = "nodev";
       useOSProber = true;
-      theme = grub-themes.crt-amber;
+      theme = grub-themes.hyperfluent;
 
       # Play mario theme
       # extraConfig = ''
