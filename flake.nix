@@ -20,6 +20,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+
     minegrub-theme.url = "github:Lxtharia/minegrub-theme";
 
     xremap.url = "github:xremap/nix-flake";
@@ -46,7 +49,7 @@
     pkgs = import nixpkgs {inherit system;};
     custom-utils = import ./utils {inherit lib;};
     custom-modules = import ./modules {inherit nixpkgs pkgs inputs custom-utils;};
-    inherit (custom-modules) grub-themes;
+    inherit (custom-modules) grub-themes sops;
   in {
     nixosConfigurations = {
       athereo-lenovo-nixos = lib.nixosSystem {
@@ -58,6 +61,9 @@
 
         modules = [
           inputs.xdg-termfilepickers.nixosModules.default
+
+          inputs.sops-nix.nixosModules.sops
+          sops
 
           # Add mango nixos module
           inputs.mango.nixosModules.mango

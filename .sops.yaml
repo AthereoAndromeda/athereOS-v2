@@ -1,0 +1,10 @@
+keys:
+  - &user_athereo age1rdcmz3mkqehej3rfx7lkqh83pnfjy5ys9920gzpau6f3cvwnqg8qtf2kd2
+  - &desktop_nixos age1m3n45r8440vulz9yx7lscfsuhh4mmvu8n225ft03e9d53t5atyfswm9yr2
+
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - age:
+      - *user_athereo
+      - *desktop_nixos

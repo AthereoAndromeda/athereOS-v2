@@ -10,4 +10,5 @@ in {
   grub-themes = import ./grub-themes pkgs;
   overlays = import ./overlays {inherit nixpkgs pkgs inputs custom-utils;};
   persist = import ./persist.nix {};
+  sops = import ./sops.nix {};
 }

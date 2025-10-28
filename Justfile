@@ -84,5 +84,10 @@ optimise:
 todo:
     rg -g '!Justfile' -g '!todo.md' -i "TO-?DO"
 
+[group('sops')]
+edit-sops:
+    sops edit secrets/example.yaml
+
 _git-add:
     @git add .
+    

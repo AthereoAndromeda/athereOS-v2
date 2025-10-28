@@ -66,6 +66,7 @@ in {
           "age"
           "vesktop"
           "direnv"
+          "sops"
         ]
         ++
         # .local/share dirs

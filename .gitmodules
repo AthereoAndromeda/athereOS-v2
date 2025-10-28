@@ -1,0 +1,3 @@
+[submodule "sops-secrets"]
+	path = sops-secrets
+	url = https://github.com/AthereoAndromeda/sops-secrets.git
