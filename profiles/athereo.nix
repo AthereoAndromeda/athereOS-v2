@@ -16,6 +16,10 @@
     ./de/mango/mango.nix
   ];
 
+  dconf.settings = {
+    "org/gnome/desktop/interface".color-scheme = "prefer-dark";
+  };
+
   # Enable base dirs
   xdg.enable = true;
 
