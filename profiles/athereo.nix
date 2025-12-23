@@ -20,6 +20,8 @@
     "org/gnome/desktop/interface".color-scheme = "prefer-dark";
   };
 
+  # services.gnome.gnome-keyring.enable = true;
+  # security.pam.services.login.enableGnomeKeyring = true; # Unlocks the keyring on login
   # Enable base dirs
   xdg.enable = true;
 
@@ -27,24 +29,24 @@
   xdg.portal.enable = true;
   xdg.portal.xdgOpenUsePortal = true;
   xdg.portal.extraPortals = with pkgs; [
-    xdg-desktop-portal-gnome
     xdg-desktop-portal-gtk
+    xdg-desktop-portal-wlr
     # xdg-desktop-portal-termfilechooser
   ];
 
   xdg.portal.config = {
     common = {
-      default = [
-        "gnome"
-        "gtk"
-      ];
+      default = "gtk";
 
+      # Use the 'wlr' portal for screen sharing/specific wayland tasks
+      "org.freedesktop.impl.portal.Screenshot" = ["wlr"];
+      "org.freedesktop.impl.portal.ScreenCast" = ["wlr"];
       "org.freedesktop.impl.portal.Secret" = "gnome-keyring";
     };
   };
 
   # services.xdg-desktop-portal-termfilepickers = let
-  #   termfilepickers = inputs.xdg-termfilepickers.packages.${pkgs.system}.default;
+  #   termfilepickers = inputs.xdg-termfilepickers.packages.${pkgs.stdenv.hostPlatform.system}.default;
   # in {
   #   enable = true;
   #   package = termfilepickers;

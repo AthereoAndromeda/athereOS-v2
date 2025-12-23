@@ -9,10 +9,10 @@
     # '';
     settings = builtins.readFile ./mango.conf;
 
-    autostart_sh = ''
-      # see autostart.sh
-      # Note: here no need to add shebang
-      wpaperd
-    '';
+    # autostart_sh = ''
+    #   # see autostart.sh
+    #   # Note: here no need to add shebang
+    #   wpaperd
+    # '';
   };
 }
