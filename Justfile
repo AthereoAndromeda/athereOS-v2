@@ -1,4 +1,5 @@
 set dotenv-load
+set shell := ["nu", "-c"]
 
 alias fmt := format
 alias s := switch
@@ -21,22 +22,22 @@ default:
 # Build in `switch` mode and add the generation to the bootloader
 [group('build')]
 switch: format _git-add
-    echo $SUDO_PASS | sudo -S nixos-rebuild --flake . {{ rebuild-opts }} switch
+    echo $env.SUDO_PASS | sudo -S nixos-rebuild --flake . {{ rebuild-opts }} switch
 
 # Build in `test` mode
 [group('build')]
 test: format _git-add
-    echo $SUDO_PASS | sudo -S nixos-rebuild --flake . test
+    echo $env.SUDO_PASS | sudo -S nixos-rebuild --flake . test
 
 # Build in `boot` mode
 [group('build')]
 boot: format _git-add
-    echo $SUDO_PASS | sudo -S nixos-rebuild --flake . boot
+    echo $env.SUDO_PASS | sudo -S nixos-rebuild --flake . boot
 
 # Build in `test` mode, with lots of debug flags
 [group('build')]
 test-debug eval-cache="true": format _git-add
-    echo $SUDO_PASS | sudo -S nixos-rebuild --flake . --option eval-cache {{eval-cache}} --show-trace --print-build-logs --verbose test
+    echo $env.SUDO_PASS | sudo -S nixos-rebuild --flake . --option eval-cache {{eval-cache}} --show-trace --print-build-logs --verbose test
 
 
 # Format all `.nix` files using Alejandra
@@ -47,7 +48,7 @@ format:
 # Update Nix Flakes
 [group('nix/utils')]
 update:
-    echo $SUDO_PASS | sudo -S nix flake update
+    echo $env.SUDO_PASS | sudo -S nix flake update
    
 # Update Nix Flakes, Test, Commit
 [group('nix/utils')]
@@ -57,12 +58,12 @@ update-ci: update test
 # Cleans nix garbage
 [group('nix/utils')]
 clean older-than="3d":
-    echo $SUDO_PASS | sudo -S nix-collect-garbage --delete-older-than "{{older-than}}"
+    echo $env.SUDO_PASS | sudo -S nix-collect-garbage --delete-older-than "{{older-than}}"
 
 # Cleans old nix garbage
 [group('nix/utils')]
 clean-old:
-    echo $SUDO_PASS | sudo -S nix-collect-garbage --delete-old
+    echo $env.SUDO_PASS | sudo -S nix-collect-garbage --delete-old
 
 # Lists all Nix Generations
 [group('nix/utils')]
@@ -72,7 +73,12 @@ list:
 # Delete specified generations
 [group('nix/utils')]
 delete-generations +gen:
-    echo $SUDO_PASS | sudo -S nix-env --profile /nix/var/nix/profiles/system --delete-generations {{gen}}
+    echo $env.SUDO_PASS | sudo -S nix-env --profile /nix/var/nix/profiles/system --delete-generations {{gen}}
+    
+# Delete specified generations
+[group('nix/utils')]
+delete-generations-range range:
+    echo $env.SUDO_PASS | sudo -S nix-env --profile /nix/var/nix/profiles/system --delete-generations ...({{range}} | each {|it| $it})
 
 # Optimize and compresses nix store. This may take a long while.
 [group('nix/utils')]
