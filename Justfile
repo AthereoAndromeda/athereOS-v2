@@ -10,6 +10,8 @@ alias td := test-debug
 alias up := update
 alias upc := update-ci
 alias opt := optimise
+alias rm := delete-generations
+alias rmr := delete-generations-range
 
 net := "true"
 rebuild-opts := if net == "true" { "" } else { "--no-net --offline" }
