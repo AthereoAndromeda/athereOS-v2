@@ -54,6 +54,7 @@ in {
           "Videos"
           "Music"
 
+          ".julia"
           ".zen"
           ".gnupg"
           ".ssh"
