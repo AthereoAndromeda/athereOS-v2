@@ -36,6 +36,9 @@
 
     jsonc2json-bin.url = "github:AthereoAndromeda/jsonc-to-json";
     jsonc2json-bin.inputs.nixpkgs.follows = "nixpkgs";
+
+    nuenv.url = "github:DeterminateSystems/nuenv";
+    nuenv.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -69,6 +72,7 @@
           {
             nixpkgs.overlays = [
               inputs.legacy-launcher.overlays.legacy-launcher
+              inputs.nuenv.overlays.default
             ];
 
             # Allow a select number of unfree pkgs
