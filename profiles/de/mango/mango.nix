@@ -1,6 +1,7 @@
 {...}: {
   imports = [
     ./wlsunset.nix
+    ./wayidle/wayidle.nix
   ];
   wayland.windowManager.mango = {
     enable = true;
