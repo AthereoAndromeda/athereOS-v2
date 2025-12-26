@@ -9,6 +9,8 @@
       "wheel"
       "libvirtd"
       "dialout"
+      "video"
+      "render"
     ];
 
     hashedPasswordFile = "/persist/password/athereo";
