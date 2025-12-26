@@ -16,6 +16,7 @@
     mask
     sttr
     pulseaudioFull
+    timg
 
     # TUI
     wezterm

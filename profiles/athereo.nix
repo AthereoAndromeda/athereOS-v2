@@ -63,6 +63,11 @@
     fend
     grim
     slurp
+
+    (nuenv.writeScriptBin {
+      name = "fzf-cliphist";
+      script = builtins.readFile ./scripts/fzf-preview.nu;
+    })
   ];
 
   programs.thunderbird = {
