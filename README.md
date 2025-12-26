@@ -14,9 +14,10 @@ Hardware is Lenovo Ideapad Flex 5 2-in-1
 - **Shell**: Nushell
 - **Launcher**: Rofi 
 - **Notifications**: SwayNC
-- **Screen Lock**: hyprlock
-- **Idle Manager**: wayidle
+- **Screen Lock**: Hyprlock
+- **Idle Manager**: Wayidle
 - **Wallpaper Engine**: wpaperd
+- **Clipboard Manager**: cliphist + wl-paste
 
 ## Applications
 - **File Manager**: Yazi
