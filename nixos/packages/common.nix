@@ -15,6 +15,7 @@
     just-lsp
     mask
     sttr
+    pulseaudioFull
 
     # TUI
     wezterm
