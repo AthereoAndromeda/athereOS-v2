@@ -55,20 +55,35 @@
 
 .low {
   border: 1px solid $color3;
-  background-image: linear-gradient(45deg, #E056FD, rgba(0, 0, 0, 0));
+  /* background-image: linear-gradient(45deg, #E056FDee, rgba(0, 0, 0, 0)); */
+  background-image: linear-gradient(45deg,
+    /* #e056fdff 0%, */
+    /* #000000ee 74% */
+    #FF218Cee 0%,
+    #FFD80099 50%,
+    #21B1FF55 100%
+  );
 }
 
 .normal {
   /* background-color: #e056fd; */
-  background-image: linear-gradient(45deg, #e056fd 0%, #000000 74%);
+  background-image: linear-gradient(45deg,
+    /* #e056fdff 0%, */
+    /* #000000ee 74% */
+    #D60270ee 0%,
+    #9B4F96ee 50%,
+    #0038A3dd 100%
+  );
   border: 1.5px solid #575D85;
-  background: $base00;
+  /* background: $base00; */
   /* border: 1.5px solid $base07; */
 }
 
 .critical {
   /* background: #00000044; */
-  background-image: linear-gradient(45deg, #E056FD 0%, #8B0000 74%);
+  /* background-image: linear-gradient(-45deg, #E056FD 0%, #8B0000 60%); */
+  /* background-image: linear-gradient(-45deg, #E056FD 0%, #FF5555 60%); */
+  background-image: linear-gradient(45deg, #FF5555 0%, #8B0000 60%);
   border: 3px solid #8B0000;
   color: #000000;
 }
@@ -127,16 +142,21 @@
 }
 
 .summary {
-  font-size: 1.2em;
-  font-weight: bold;
+  font: {
+    /* family: "LIBRARY 3 AM"; */
+    size: 1.2em;
+    weight: bold;
+  }
+  /* background: black; */
   background: transparent;
-  color: $color3;
-  text-shadow: none;
+  /* color: $color3; */
+  text-shadow: 1px 1px 8px cyan;
 
 }
 
 .time {
-  color: $color8;
+  /* color: $color8; */
+  color: cyan;
   margin-right: 45px;
   margin-bottom: 5px;
 

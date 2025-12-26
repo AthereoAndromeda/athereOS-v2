@@ -1,16 +1,17 @@
-@use "../colors" as *;
+/* @use "../colors" as *; */
+@use "../base" as *;
 
 /* Mpris widget */
 .widget-mpris {
   /* The parent to all players */
   /* color: @foreground; */
-  background: blue;
+  background: none;
   margin: 0;
   padding: 0;
 
   &-player {
-    padding: 10px;
-    /* margin: 80px; */
+    /* padding: 50px; */
+    margin: 10px;
     /* color: $foreground; */
     color: white;
     /* padding-bottom: 0; */
@@ -23,7 +24,7 @@
     /* color: $foreground; */
     color: white;
     letter-spacing: 1px;
-    font: bold 1em "Jetbrains Nerd Font Mono";
+    font: bold 1em $interface-font;
   }
 
   &-subtitle {
