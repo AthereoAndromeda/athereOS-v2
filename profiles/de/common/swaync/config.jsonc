@@ -63,13 +63,9 @@
     "buttons-grid": {
       "actions": [
         {
-          "label": "直",
-          "command": "notify-send FUCK this"
+          "label": "󰂯",
+          "command": "notify-send GoodLord plswork"
         },
-        {
-          "label": "",
-          "command": "~/.config/rofi/rofi-bluetooth"
-        }
       ]
     }
   }

@@ -1,18 +1,18 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  inputs,
+  ...
+}: let
   inherit (builtins) readFile fromJSON;
+  jsonc-to-json = inputs.jsonc2json-bin.packages.${pkgs.stdenv.hostPlatform.system}.default;
+
   build-scss = path:
     pkgs.stdenv.mkDerivation {
       name = "sass-builder";
       src = path;
 
-      nativeBuildInputs = with pkgs; [
-        dart-sass
-      ];
-
-      dontUnpack = true;
-      dontPatch = true;
-      dontConfigure = true;
-      dontInstall = true;
+      nativeBuildInputs = [pkgs.dart-sass];
+      phases = ["buildPhase"];
 
       buildPhase = ''
         mkdir -p $out
@@ -22,18 +22,24 @@
       '';
     };
 
-  jsonc2json = path:
+  build-config = path:
     pkgs.stdenv.mkDerivation {
-      name = "jsonc2json";
+      name = "config-builder";
       src = path;
 
-      nativeBuildInputs = with pkgs; [
-      ];
+      nativeBuildInputs = [jsonc-to-json];
+      phases = ["buildPhase"];
+
+      buildPhase = ''
+        mkdir -p $out
+        echo "Transforming JSONC Config..."
+        (cat $src | jsonc-to-json) > $out/config.json
+      '';
     };
 in {
   services.swaync = {
     enable = true;
     style = readFile "${build-scss ./scss}/dist/style.css";
-    # config = fromJSON (readFile ./config.jsonc);
+    settings = fromJSON (readFile "${build-config ./config.jsonc}/config.json");
   };
 }

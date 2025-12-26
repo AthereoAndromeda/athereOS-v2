@@ -33,6 +33,9 @@
 
     mango.url = "github:DreamMaoMao/mango";
     mango.inputs.nixpkgs.follows = "nixpkgs";
+
+    jsonc2json-bin.url = "github:AthereoAndromeda/jsonc-to-json";
+    jsonc2json-bin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
