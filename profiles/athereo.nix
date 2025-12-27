@@ -81,6 +81,10 @@ in {
       name = "conservation-mode";
       script = readFile ./scripts/conservation-mode.nu;
     })
+    (nuenv.writeScriptBin {
+      name = "screenshot-and-save";
+      script = readFile ./scripts/screenshot-and-save.nu;
+    })
     askpass-bin
   ];
 
