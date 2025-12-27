@@ -32,9 +32,6 @@ in {
 
   environment.shells = [pkgs.bashInteractive pkgs.nushell];
 
-  services.gnome.gnome-keyring.enable = true;
-  programs.seahorse.enable = true;
-
   # Fingerprint scanner on my device is not supported :<
   # systemd.services.fprintd = {
   #   wantedBy = ["multi-user.target"];
@@ -60,11 +57,6 @@ in {
   time.timeZone = "Asia/Manila";
   # Prevents dual boot Windows getting wrong time
   time.hardwareClockInLocalTime = true;
-
-  security.sudo.extraConfig = ''
-    # rollback results in sudo lectures after each reboot
-    Defaults lecture = never
-  '';
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -106,10 +98,6 @@ in {
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
 
   # List services that you want to enable:
 
