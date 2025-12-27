@@ -6,6 +6,11 @@
   ...
 }: let
   inherit (builtins) readFile;
+
+  askpass-bin = pkgs.nuenv.writeScriptBin {
+    name = "askpass";
+    script = readFile ./scripts/askpass.nu;
+  };
 in {
   imports = [
     ./packages # Auto-imports all .nix files in packages/
@@ -66,7 +71,7 @@ in {
     grim
     slurp
 
-    lxqt.lxqt-openssh-askpass
+    # lxqt.lxqt-openssh-askpass
 
     (nuenv.writeScriptBin {
       name = "fzf-cliphist";
@@ -76,10 +81,11 @@ in {
       name = "conservation-mode";
       script = readFile ./scripts/conservation-mode.nu;
     })
+    askpass-bin
   ];
 
   home.sessionVariables = {
-    SUDO_ASKPASS = "${pkgs.lxqt.lxqt-openssh-askpass}/bin/lxqt-openssh-askpass";
+    SUDO_ASKPASS = "${askpass-bin}/bin/askpass";
 
     XCURSOR_THEME = "LyraQ-cursors";
     XCURSOR_SIZE = "48";
