@@ -55,7 +55,7 @@
       # 5. Retention: Delete snapshots in old_roots older than 7 days
       echo "Cleaning up backups older than 7 days..."
       for snapshot in $(find /mnt/old_roots/ -maxdepth 1 -mtime +7); do
-        if [[ "$snapshot" != "mnt/old_roots" ]]; then
+        if [[ "$snapshot" != "/mnt/old_roots" ]]; then
           echo "Expiring old backup: $snapshot"
           delete_subvolume_recursively "$snapshot"
         fi
