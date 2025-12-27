@@ -76,6 +76,19 @@ in {
     })
   ];
 
+  home.sessionVariables = {
+    XCURSOR_THEME = "LyraQ-cursors";
+    XCURSOR_SIZE = "48";
+  };
+
+  home.pointerCursor = {
+    gtk.enable = true;
+    enable = true;
+    package = pkgs.lyra-cursors;
+    name = config.home.sessionVariables.XCURSOR_THEME;
+    size = config.home.sessionVariables.XCURSOR_SIZE;
+  };
+
   programs.thunderbird = {
     enable = true;
 
