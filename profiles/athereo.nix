@@ -85,6 +85,8 @@ in {
       name = "screenshot-and-save";
       script = readFile ./scripts/screenshot-and-save.nu;
     })
+
+    (pkgs.writeShellScriptBin "delete-btrfs-subvolume" (readFile ./scripts/delete-btrfs-subvolume.sh))
     askpass-bin
   ];
 
