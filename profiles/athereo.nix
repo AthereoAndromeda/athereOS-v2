@@ -66,6 +66,8 @@ in {
     grim
     slurp
 
+    lxqt.lxqt-openssh-askpass
+
     (nuenv.writeScriptBin {
       name = "fzf-cliphist";
       script = readFile ./scripts/fzf-preview.nu;
@@ -77,6 +79,8 @@ in {
   ];
 
   home.sessionVariables = {
+    SUDO_ASKPASS = "${pkgs.lxqt.lxqt-openssh-askpass}/bin/lxqt-openssh-askpass";
+
     XCURSOR_THEME = "LyraQ-cursors";
     XCURSOR_SIZE = "48";
   };
