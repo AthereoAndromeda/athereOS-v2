@@ -48,6 +48,10 @@ in {
             directory = ".config/obsidian";
             mode = "0755";
           }
+          {
+            directory = ".local/share/Trash";
+            mode = "1777";
+          }
           "Downloads"
           "Documents"
           "Pictures"
@@ -74,7 +78,6 @@ in {
           "zoxide"
           "navi"
           "keyrings"
-          "Trash"
           "direnv"
         ];
 
