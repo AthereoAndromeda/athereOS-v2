@@ -1,5 +1,5 @@
 {...}: {
-  services.vaultwarden.enable = true;
+  services.vaultwarden.enable = false;
   services.vaultwarden.config = {
     DOMAIN = "http://localhost";
     ROCKET_ADDRESS = "0.0.0.0";
