@@ -4,7 +4,9 @@
   lib,
   inputs,
   ...
-}: {
+}: let
+  inherit (builtins) readFile;
+in {
   imports = [
     ./packages # Auto-imports all .nix files in packages/
     inputs.xdg-termfilepickers.homeManagerModules.default
@@ -66,7 +68,11 @@
 
     (nuenv.writeScriptBin {
       name = "fzf-cliphist";
-      script = builtins.readFile ./scripts/fzf-preview.nu;
+      script = readFile ./scripts/fzf-preview.nu;
+    })
+    (nuenv.writeScriptBin {
+      name = "conservation-mode";
+      script = readFile ./scripts/conservation-mode.nu;
     })
   ];
 
