@@ -19,6 +19,7 @@
     timg
 
     # TUI
+    yazi
     wezterm
     kitty
     fastfetch
