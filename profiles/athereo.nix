@@ -4,18 +4,12 @@
   lib,
   inputs,
   ...
-}: let
-  inherit (builtins) readFile;
-
-  askpass-bin = pkgs.nuenv.writeScriptBin {
-    name = "askpass";
-    script = readFile ./scripts/askpass.nu;
-  };
-in {
+}: {
   imports = [
-    ./packages # Auto-imports all .nix files in packages/
     inputs.xdg-termfilepickers.homeManagerModules.default
     inputs.mango.hmModules.mango
+    ./packages # Auto-imports all .nix files in packages/
+    ./scripts
 
     # ./de/gnome/dconf.nix
     # ./de/hyprland/hypr.nix
@@ -27,8 +21,6 @@ in {
     "org/gnome/desktop/interface".color-scheme = "prefer-dark";
   };
 
-  # services.gnome.gnome-keyring.enable = true;
-  # security.pam.services.login.enableGnomeKeyring = true; # Unlocks the keyring on login
   # Enable base dirs
   xdg.enable = true;
 
@@ -70,29 +62,9 @@ in {
     fend
     grim
     slurp
-
-    # lxqt.lxqt-openssh-askpass
-
-    (nuenv.writeScriptBin {
-      name = "fzf-cliphist";
-      script = readFile ./scripts/fzf-preview.nu;
-    })
-    (nuenv.writeScriptBin {
-      name = "conservation-mode";
-      script = readFile ./scripts/conservation-mode.nu;
-    })
-    (nuenv.writeScriptBin {
-      name = "screenshot-and-save";
-      script = readFile ./scripts/screenshot-and-save.nu;
-    })
-
-    (pkgs.writeShellScriptBin "delete-btrfs-subvolume" (readFile ./scripts/delete-btrfs-subvolume.sh))
-    askpass-bin
   ];
 
   home.sessionVariables = {
-    SUDO_ASKPASS = "${askpass-bin}/bin/askpass";
-
     XCURSOR_THEME = "LyraQ-cursors";
     XCURSOR_SIZE = "48";
   };
