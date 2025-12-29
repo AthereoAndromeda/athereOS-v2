@@ -1,0 +1,55 @@
+(defvar tag__occupied '[1,2,3,4,5,6,7,8,9]')
+
+(deflisten tag__selected
+  :initial '{"occupied": [], "current": 1}'
+  `./status-bar/mango-tags/get-tags.nu watch-tags`)
+
+(deflisten tag__current-layout
+  `./status-bar/mango-tags/get-tags.nu watch-layout`)
+
+;; TODO: Change to deflisten
+; (defpoll tag__is-keymode
+;   :interval "500ms"
+;   `mmsg -g -b | awk '{print $NF}'`)
+
+(deflisten tag__keymode
+  `./status-bar/mango-tags/get-tags.nu watch-keymode`)
+
+(defwidget tags []
+  (box
+    :orientation "h"
+    :space-evenly false
+
+    (for tag in tag__occupied
+        (button
+          :width 10
+          ; :height 20
+          :onclick `mmsg -t ${tag}`
+          :class "tag__button ${tag__selected["current"] == tag ? "active": ""}"
+
+          
+          (box
+            :halign "center"
+            :class "tag__container"
+            ; :space-evenly false
+            (label
+              :class "tag__header ${tag__selected["current"] == tag ? "active":""}"
+              :halign "start"
+              :xalign 0.5
+              :text "${tag} ${tag__selected["current"] == tag ? "¦" : ""}")
+  
+            (label
+              :class "tag__body"
+              :visible {tag__selected["current"] == tag}
+              :text "${tag__selected["current"] == tag ? tag__current-layout : ""}")
+
+              )))
+
+    (button
+      "${tag__current-layout}")
+
+    (box
+      :class "tag__keymode-container"
+      :visible {tag__keymode != "default"}
+      tag__keymode)
+))

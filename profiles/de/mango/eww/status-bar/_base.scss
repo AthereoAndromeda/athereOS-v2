@@ -1,0 +1,52 @@
+$top-bar-alpha: 0.75;
+
+$main-color1: rgba(214, 2, 112, $top-bar-alpha);
+$main-color2: rgba(155, 79, 150, $top-bar-alpha);
+$main-color3: rgba(0, 56, 168, $top-bar-alpha);
+
+
+$main-color1-opaque: rgb(214, 2, 112);
+$main-color2-opaque: rgb(155, 79, 150);
+$main-color3-opaque: rgb(0, 56, 168);
+
+$main-gradient: linear-gradient(to right,
+    $main-color1,
+    $main-color2,
+    $main-color3);
+
+
+$main-gradient-45deg: linear-gradient(45deg,
+    $main-color1,
+    $main-color2,
+    $main-color3);
+
+
+@mixin get-gradient($deg: 45deg, $alpha: 0.75) {
+  $main-color1: rgba(214, 2, 112, $alpha);
+  $main-color2: rgba(155, 79, 150, $alpha);
+  $main-color3: rgba(0, 56, 168, $alpha);
+  $main-gradient: linear-gradient($deg,
+      $main-color1,
+      $main-color2,
+      $main-color3);
+
+  background: $main-gradient;
+}
+
+@mixin glow-text($shadow-color) {
+  text-shadow:
+    0 0 5px $shadow-color,
+    /* Small, sharp glow */
+    0 0 10px $shadow-color,
+    /* Medium glow */
+    0 0 20px $shadow-color,
+    /* Wide, soft glow */
+    0 0 40px $shadow-color;
+}
+
+@mixin backlit($color) {
+  /* color: #1a1a1a; */
+  /* text-shadow: 0 0 5px rgba(115, 3, 192, 0.8); */
+  text-shadow: 2px 2px 5px $color;
+  /* font-size: 100px; */
+}

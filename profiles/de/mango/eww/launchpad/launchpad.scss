@@ -1,0 +1,64 @@
+@use "_visualizer.scss";
+
+$top-bar-alpha: 0.75;
+
+.time-widget {
+  color: rgba(250, 250, 250, 0.5);
+  padding: 20px;
+  /* color: black; */
+  font-family: "LIBRARY 3 AM";
+  font-size: 2em;
+  font-weight: bold;
+  text-shadow:
+    0 0 5px #ec38bc,
+    /* Small, sharp glow */
+    0 0 8px #ec38bc,
+    /* Medium glow */
+    0 0 10px #ec38bc,
+    /* Wide, soft glow */
+    0 0 15px #ec38bc;
+  /* Very broad radiance */
+
+  &.background {
+    background: none;
+  }
+}
+
+
+.inner {
+  margin: 0;
+}
+
+.calendar {
+  font-size: 10px;
+  font-family: Ubuntu;
+  text-shadow: 0 0 1px black;
+  padding: 10px;
+  margin: 10px;
+}
+
+
+.glow-text {
+  color: #fff;
+  /* White text creates the "bright core" */
+  /* text-shadow: 0 0 10px $glow-color; */
+  text-shadow:
+    0 0 5px #ec38bc,
+    /* Small, sharp glow */
+    0 0 10px #ec38bc,
+    /* Medium glow */
+    0 0 20px #ec38bc,
+    /* Wide, soft glow */
+    0 0 40px #ec38bc;
+  /* Very broad radiance */
+
+  /* animation: pulse 1.5s infinite alternate; */
+}
+
+$glow-color: rgba(236, 56, 188, 0.6);
+
+
+.backlit {
+  /* color: #1a1a1a; */
+  text-shadow: 0 0 8px rgba(115, 3, 192, 0.8);
+}

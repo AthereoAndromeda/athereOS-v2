@@ -1,0 +1,33 @@
+@use "../base" as *;
+$neon-red: #ff3131; // A classic, vibrant neon red
+
+/* %glow-text-red { */
+/* color: antiquewhite; // The white center "tube" */
+/* text-shadow: */
+/* 0 0 5px $neon-red, */
+/* Sharp innermost glow */
+/* 0 0 10px $neon-red, */
+/* Medium haze */
+/* 0 0 20px $neon-red, */
+/* } */
+
+.volume {
+  /* @extend %glow-text-red; */
+  @include backlit(hotpink);
+  color: pink;
+  /* background: rgba(10, 10, 110, 0.1); */
+  border-radius: 10px;
+  margin-right: 10px;
+
+  padding: {
+    left: 5px;
+    right: 5px;
+  }
+}
+
+
+
+
+.muted {
+  color: #ff5555;
+}

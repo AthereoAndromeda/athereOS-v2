@@ -1,0 +1,52 @@
+@use "../base" as b;
+
+.visualizer {
+  padding: 0;
+  margin: 0;
+  /* background: rgba(0, 0, 0, 0.3); */
+}
+
+.cava-container {
+  /* padding: 0 10px; */
+  background: rgba(0, 0, 0, 0.3);
+  /* border-radius: 8px; */
+}
+
+.visualizer-bar {
+  background: linear-gradient(to top,
+      rgb(72, 0, 255) 0%,
+      rgb(157, 0, 255) 50%,
+      rgb(255, 0, 255) 100%);
+
+  /* background: linear-gradient(to bottom, */
+  /* b.$main-color1-opaque 0%, */
+  /* b.$main-color2-opaque 50%, */
+  /* b.$main-color3-opaque 100%); */
+
+
+  margin: 0 {
+    right: 0.5px;
+  }
+
+  border-radius: 2px 2px 0 0;
+  transition: 40ms height ease-out;
+
+  /* Give it that glow we talked about earlier! */
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+
+  min-height: 3px;
+  /* Keeps the bar technically "there" to prevent layout shifts */
+  background-color: transparent;
+  transition: 50ms height ease-out;
+}
+
+
+.bar-background-fill {
+  /* Match your original bar gradient or a solid dark color */
+  background: rgba(29, 38, 113, 0.8);
+}
+
+.status-bar__content {
+  /* Ensure this container has a fixed height matching the window */
+  background: transparent;
+}

@@ -1,0 +1,78 @@
+(include "./status-bar/visualizer/visualizer.yuck")
+(include "./status-bar/battery/battery.yuck")
+(include "./status-bar/volume/volume.yuck")
+(include "./status-bar/mango-tags/tags.yuck")
+
+(defpoll time
+  :interval "1s"
+  :initial "Getting Time..."
+  `date +"%T | %d %b %Y [%a]"`)
+
+(defwidget left-side []
+  (box
+    :orientation "h"
+    ; :hexpand true
+    :halign "start"
+    ; :width 500
+    (tags)
+    ))
+
+(defwidget center-side []
+  (box
+    :orientation "h"
+    :valign "center"
+    :vexpand true
+    :class "status-bar__center"
+    (label
+      :yalign 0.5
+      :text time
+      :class "time")
+    ))
+
+
+(defwidget right-side []
+  (box
+    :orientation "h"
+    :halign "end"
+    :class "right-side"
+    ; :hexpand true
+    ; (scroll
+    ;   :width 100
+    ;   :hscroll true
+      (systray :orientation "h" :class "systray");)
+    (volume)
+
+    (battery-widget)));
+
+(defwidget status-bar-inner []
+  (overlay
+    :vexpand true
+    :class "status-bar__overlay"
+    ;; Layer 1: The Visualizer (Background)
+    (box
+      :class "visualizer"
+      ; :style "padding:0;margin:0;"
+      (visualizer))
+
+    ;; Layer 2: Your Content (Foreground)
+    (centerbox
+      :orientation "h"
+      :vexpand true
+      :class "status-bar__content"
+      (left-side)
+      (center-side)
+      (right-side))))
+
+(defwindow status-bar
+  :monitor 0
+  :stacking "overlay"
+  :exclusive "true"
+  ; :focusable "ondemand"
+  :geometry (geometry
+    :x "0%"
+    :y "0"
+    :width "100%"
+    :height "30px"
+    :anchor "top center")
+    
+  (status-bar-inner))

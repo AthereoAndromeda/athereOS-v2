@@ -1,0 +1,29 @@
+@use "../base" as *;
+
+
+.battery {
+  @include backlit(blue);
+
+  background: none;
+  color: #48CAE4;
+
+  &-container {
+    background: none;
+    border: none;
+  }
+}
+
+.battery-widget {
+
+  &__full {
+    color: gold;
+  }
+}
+
+.battery_low {
+  color: #ff5555;
+}
+
+.charging {
+  color: #90EE90;
+}
