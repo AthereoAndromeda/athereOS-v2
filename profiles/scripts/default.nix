@@ -26,6 +26,10 @@ in {
       name = "screenshot-and-save";
       script = readFile ./nu/screenshot-and-save.nu;
     })
+    (nuenv.writeScriptBin {
+      name = "kb-backlight";
+      script = readFile ./nu/kb-backlight.nu;
+    })
 
     (pkgs.writeShellScriptBin "delete-btrfs-subvolume" (readFile ./bash/delete-btrfs-subvolume.sh))
     askpass-bin
