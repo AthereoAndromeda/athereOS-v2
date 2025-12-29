@@ -65,7 +65,7 @@
 
 (defwindow status-bar
   :monitor 0
-  :stacking "overlay"
+  :stacking "fg"
   :exclusive "true"
   ; :focusable "ondemand"
   :geometry (geometry

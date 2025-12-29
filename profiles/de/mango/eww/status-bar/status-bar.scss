@@ -7,16 +7,11 @@
 $glow-shadow-col: #ec38bc;
 
 .status-bar {
+  color: black;
   font: {
-    /* family: "LIBRARY 3 AM"; */
     family: "Aquire";
     size: 20px;
-    weight: bold;
   }
-
-  color: black;
-  
-
 
   &.background {
     // https://uigradients.com/#Moor
@@ -26,17 +21,23 @@ $glow-shadow-col: #ec38bc;
     background: $main-gradient;
   }
 
-
   &__center .time {
     @include glow-text($glow-shadow-col);
-    /* font-size: 1.2em; */
-    font-size: 27px;
-    color: #fff;
+    $shadow-col: #99EDC3;
     padding: 0;
     margin: 0;
-    /* padding: 10px; */
-    /* margin: 10px; */
-    /* color: red; */
+    color: rgba(250, 250, 250, 0.9);
+    /* color: $shadow-col; */
+    background: none;
+    
+    font: {
+      size: 27px;
+    }
+    text-shadow:
+      0 0 5px $shadow-col,
+      0 0 8px $shadow-col,
+      0 0 10px $shadow-col,
+      0 0 15px $shadow-col;
   }
 }
 

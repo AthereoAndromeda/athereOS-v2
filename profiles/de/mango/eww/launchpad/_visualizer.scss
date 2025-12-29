@@ -13,7 +13,7 @@ $main-gradient: linear-gradient(to right,
 
 .launchpad {
   
-  &_visualizer {
+  &__visualizer {
     padding: 10px;
 
     /* background: rgba(0, 0, 0, 0.5); */
@@ -24,16 +24,20 @@ $main-gradient: linear-gradient(to right,
     
   }
 
-  &_cava-container {
+  &__cava-container {
     padding: 0 10px;
     /* background: rgba(0, 0, 0, 0.2); */
     border-radius: 8px;
   }
 
-  &_visualizer-bar {
+  &__visualizer-bar {
     /* This creates a gradient from bottom (green) to top (red) */
     /* Even when the bar is short, it will show the bottom of the gradient */
-    padding: 15px;
+    padding: 10px;
+    margin: 0 {
+      left: 1px;
+      right: 1px;
+    }
     //background: linear-gradient(to top,
     //rgb(80, 250, 123) 0%,    /* Green at bottom */
     //rgb(241, 250, 140) 50%,  /* Yellow in middle */
@@ -57,8 +61,6 @@ $main-gradient: linear-gradient(to right,
 
     border-radius: 2px 2px 0 0;
     transition: 30ms height ease-out;
-
-    /* Give it that glow we talked about earlier! */
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
   }
 }
