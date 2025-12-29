@@ -20,5 +20,6 @@ in {
     ]
     ++ [
       (install-font ./library-3-am-font)
+      (install-font ./aquire-font)
     ];
 }

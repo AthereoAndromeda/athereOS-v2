@@ -7,11 +7,16 @@
 $glow-shadow-col: #ec38bc;
 
 .status-bar {
-  /* color: rgba(250, 250, 250, 0.5); */
+  font: {
+    /* family: "LIBRARY 3 AM"; */
+    family: "Aquire";
+    size: 20px;
+    weight: bold;
+  }
+
   color: black;
-  font-family: "LIBRARY 3 AM";
-  font-size: 20px;
-  font-weight: bold;
+  
+
 
   &.background {
     // https://uigradients.com/#Moor
