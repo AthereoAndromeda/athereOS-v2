@@ -129,6 +129,21 @@ def "main tag-num" [] {
   echo $t
 }
 
+def determine-type [str: list<string>] {
+  if ($str | length) == 6 {
+    # parse-tag $str
+  } else if ($str | length) == 5 {
+    
+  }
+}
+
+# Watch the mmsg
 def main [] {
-  
+  mmsg -w
+    | lines
+    | split column " "
+    | each {|m|
+      print $m
+      determine-type $m
+    }
 }

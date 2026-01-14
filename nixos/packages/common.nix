@@ -39,4 +39,10 @@
     enable = true;
     enableBashIntegration = true;
   };
+
+  # In NixOS setup since I need virtual camera
+  programs.obs-studio = {
+    enable = true;
+    enableVirtualCamera = true;
+  };
 }
