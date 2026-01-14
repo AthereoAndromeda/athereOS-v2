@@ -7,7 +7,7 @@
 }: {
   imports = [
     inputs.xdg-termfilepickers.homeManagerModules.default
-    inputs.mango.hmModules.mango
+    # inputs.mango.hmModules.mango
     ./packages # Auto-imports all .nix files in packages/
     ./services
     ./scripts
@@ -15,7 +15,8 @@
     # ./de/gnome/dconf.nix
     # ./de/hyprland/hypr.nix
     ./de/common
-    ./de/mango/mango.nix
+    ./de/niri/niri.nix
+    # ./de/mango/mango.nix
   ];
 
   dconf.settings = {

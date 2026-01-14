@@ -31,8 +31,11 @@
     legacy-launcher.url = "github:AthereoAndromeda/legacy-launcher-nix";
     legacy-launcher.inputs.nixpkgs.follows = "nixpkgs";
 
-    mango.url = "github:DreamMaoMao/mango";
-    mango.inputs.nixpkgs.follows = "nixpkgs";
+    # mango.url = "github:DreamMaoMao/mango";
+    # mango.inputs.nixpkgs.follows = "nixpkgs";
+    #
+    niri.url = "github:sodiboo/niri-flake";
+    niri.inputs.nixpkgs.follows = "nixpkgs";
 
     jsonc2json-bin.url = "github:AthereoAndromeda/jsonc-to-json";
     jsonc2json-bin.inputs.nixpkgs.follows = "nixpkgs";
@@ -66,13 +69,14 @@
           inputs.xdg-termfilepickers.nixosModules.default
 
           # Add mango nixos module
-          inputs.mango.nixosModules.mango
+          # inputs.mango.nixosModules.mango
 
           # Configure Nix/pkgs
           {
             nixpkgs.overlays = [
               inputs.legacy-launcher.overlays.legacy-launcher
               inputs.nuenv.overlays.default
+              inputs.niri.overlays.niri
             ];
 
             # Allow a select number of unfree pkgs
@@ -83,6 +87,8 @@
 
             nix.settings.experimental-features = ["nix-command" "flakes"];
           }
+
+          inputs.niri.nixosModules.niri
 
           # Setup nixos-hardware
           inputs.nixos-hardware.nixosModules.lenovo-ideapad-16ahp9

@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  programs.mango.enable = true;
+  # programs.mango.enable = true;
 
   environment.systemPackages = with pkgs; [
     foot
