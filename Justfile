@@ -90,7 +90,12 @@ optimise:
 # Searches through all files for TODO:
 [group('utils')]
 todo:
-    rg -g '!Justfile' -g '!todo.md' -i "TO-?DO"
+    rg -g '!Justfile' -g '!todo.md' -i "(?-i)TODO"
+    
+# Searches through all files for FIX or FIXME:
+[group('utils')]
+fix:
+    rg -g '!Justfile' -g '!todo.md' -i "(?-i)FIX(ME)?"
 
 _git-add:
     @git add .
