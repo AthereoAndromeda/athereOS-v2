@@ -80,7 +80,7 @@ input {
 
     // Focus windows and outputs automatically when moving the mouse into them.
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
-    focus-follows-mouse max-scroll-amount="100%"
+    focus-follows-mouse max-scroll-amount="90%"
 }
 
 // You can configure outputs by their name, which you can find
@@ -321,7 +321,8 @@ hotkey-overlay {
 
 // Put swaybg inside the overview backdrop.
 layer-rule {
-    match namespace="^wpaperd-eDP-1$"
+    // match namespace="^wpaperd-eDP-1$"
+    match namespace=r#"^wpaperd-(e)?DP(-\d{1,3})?$"#
     place-within-backdrop true
 }
 
@@ -369,7 +370,10 @@ animations {
     // Slow down all animations by this factor. Values below 1 speed them up instead.
     // slowdown 3.0
 
-    
+    workspace-switch {
+        duration-ms 250
+        curve "cubic-bezier" 0.34 1.34 0.9 1
+    }
 }
 
 // Window rules let you adjust behavior for individual windows.
@@ -399,15 +403,23 @@ window-rule {
     default-floating-position x=100 y=100 relative-to="top-left"
 }
 
-// Open the Zen Browser picture-in-picture player as floating by default.
 window-rule {
-    // This app-id regular expression will work for both:
     match app-id=r#"^zen-beta$"# title="^Picture-in-Picture$"
     open-floating true
     default-column-width { fixed 720; }
     default-window-height { fixed 405; }
     open-focused false
     default-floating-position x=100 y=100 relative-to="top-left"
+}
+
+window-rule {
+    match app-id=r#"^cliphist$"#
+    open-floating true
+    open-focused true
+    default-column-width { fixed 800; }
+    default-window-height { fixed 1000; }
+
+    block-out-from "screen-capture"
 }
 
 // Example: block out two password managers from screen capture.
@@ -459,6 +471,7 @@ binds {
     Mod+E hotkey-overlay-title="Run an Application: Zen Browser" { spawn "zen-beta"; }
     Mod+Alt+L hotkey-overlay-title="Lock the Screen" { spawn-sh "loginctl lock-session"; }
     Mod+P hotkey-overlay-title="Toggle swaync-client" { spawn-sh "swaync-client -t"; }
+    Mod+B hotkey-overlay-title="Show clipboard history" { spawn-sh "wezterm start --class cliphist -- fzf-cliphist"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
@@ -484,8 +497,8 @@ binds {
     // Example brightness key mappings for brightnessctl.
     // You can use regular spawn with multiple arguments too (to avoid going through "sh"),
     // but you need to manually put each argument in separate "" quotes.
-    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+5%"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "5%-"; }
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,
