@@ -1,9 +1,8 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 add_newline = false
-format = """
-[╭](fg:white) [](#ffffff)[ $os ](fg:#3a9efd bg:white)[ ](#ffffff)$username$directory$all$line_break$character"""
+format = """[╭](fg:white) [](#ffffff)[$os ](fg:#3a9efd bg:white)[ ](#ffffff)$username$directory$all$line_break$character"""
 
-right_format = """$cmd_duration$git_branch$git_state$git_status$time"""
+right_format = """$cmd_duration$git_branch$git_commit$git_state$git_status$time"""
 
 palette = "purplish"
 
@@ -55,12 +54,28 @@ error_symbol = "[╰─×](#ff0000)"
 
 [cmd_duration]
 min_time = 500
-format = '(fg:current_line)[](fg:orange)[  ](fg:primary bg:orange)[](fg:orange bg:box)[ $duration ](fg:foreground bg:box)[](fg:box)'
+format = '(fg:current_line)[](fg:primary bg:orange)[ $duration ](fg:foreground bg:box)'
+
+[direnv]
+disabled = false
+symbol = " "
+
+[nix_shell]
+heuristic = true
 
 [git_branch]
 format = "[ $symbol $branch ]($style) "
 symbol = ""
 style = "#00ff00"
+
+[git_commit]
+tag_disabled = false
+style = "#00ffa6"
+
+[git_status]
+staged = "+${count}"
+untracked = "?${count}"
+modified = "!${count}"
 
 [directory]
 format = "[](#3a9efd)[$path]($style)[ ](#3a9efd)"
@@ -75,3 +90,7 @@ show_always = true
 format = "[$time](#ffff00)"
 time_format = "%a, %I:%M %p"
 disabled = false
+
+[[battery.display]]
+threshold = 20
+style = 'bold red'
