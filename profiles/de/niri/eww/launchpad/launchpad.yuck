@@ -1,0 +1,61 @@
+(defwidget time-widget []
+  (box
+    :class "launchpad__time-widget"
+    :orientation "v"
+    :valign "start"
+    time
+    ; (calendar :class "calendar")
+    ))
+
+
+(defwindow launchpad
+  :monitor 0
+  :stacking "bottom"
+  ; :focusable "exclusive"
+  :geometry (geometry
+    :x "100%"
+    :y "5%"
+    ; :width "100px"
+    ; :height "100px"
+    :anchor "top center")
+
+  (box
+    :class "launchpad__container"
+    :orientation "v"
+
+    "All Systems Ready"
+    "Enter Hyperspace?"
+    "Are we hyperwarp yet"
+    (time-widget))
+  )
+
+; This listens to the script and keeps the 'cava_data' variable updated
+ (deflisten launchpad_cava :initial "[0,0,0,0,0,0,10,0,0,0]"
+   `./launchpad/cava_to_eww.nu`)
+; (deflisten launchpad_cava :initial "[0,0,0,0,0,0,10,0,0,0]"
+;   `./status-bar/visualizer/cava_to_eww.nu`)
+
+(defwindow launchpad__visualizer
+  :monitor 0
+  :stacking "bottom"
+  :geometry (geometry
+    :x "100%"
+    :y "0%"
+    :height "200px"
+    :anchor "bottom center"
+  )
+
+  
+  (box :class "launchpad__cava-container"
+       :spacing 2
+       :orientation "h"
+       :halign "center"
+    (for entry in launchpad_cava
+      (box
+        :class "launchpad__visualizer-bar"
+        :valign "end"
+        :width 12
+        :style "box-shadow: ${entry > 10 ? '0 0 10px #ff5555' : 'none'};"
+        ;; We use the number from the array as the height
+        :height entry)))
+)

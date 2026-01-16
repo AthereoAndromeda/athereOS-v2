@@ -1,0 +1,60 @@
+@use "visualizer/visualizer";
+@use "battery/battery";
+@use "volume/volume";
+@use "mango-tags/tags";
+@use "base" as *;
+
+$glow-shadow-col: #ec38bc;
+
+.status-bar {
+  color: black;
+  font: {
+    family: "Aquire";
+    size: 20px;
+  }
+
+  &.background {
+    // https://uigradients.com/#Moor
+    /* background-color: rgba(255,255,255,0.3); */
+    /* background: linear-gradient(to right, #1D2671, #C33764); */
+    /* background: linear-gradient(to right, rgba(29, 38, 113, $top-bar-alpha), rgba(195, 55, 100, $top-bar-alpha)); */
+    background: $main-gradient;
+  }
+
+  &__center .time {
+    @include glow-text($glow-shadow-col);
+    $shadow-col: #99EDC3;
+    padding: 0;
+    margin: 0;
+    color: rgba(250, 250, 250, 0.9);
+    /* color: $shadow-col; */
+    background: none;
+    
+    font: {
+      size: 27px;
+    }
+    text-shadow:
+      0 0 5px $shadow-col,
+      0 0 8px $shadow-col,
+      0 0 10px $shadow-col,
+      0 0 15px $shadow-col;
+  }
+}
+
+.right-side {
+  margin-right: 10px;
+}
+
+.systray {
+  margin: {
+    right: 10px;
+  }
+
+  /* background: black; */
+  background: rgba(50, 50, 50, 0.4);
+  box-shadow: 2px 2px 10px green;
+
+  border: {
+    radius: 10px;
+  }
+}

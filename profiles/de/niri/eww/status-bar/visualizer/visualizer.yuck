@@ -1,0 +1,14 @@
+;; This listens to the script and keeps the 'cava_data' variable updated
+(deflisten cava_data :initial "[0,1,2,5,8,12,15,17,19,20]"
+  `./status-bar/visualizer/cava_to_eww.nu`)
+
+(defwidget visualizer []
+  (box :class "cava-container"
+       :spacing 0          ;; Remove spacing for a solid wall look
+       :orientation "h"
+       :hexpand true       ;; Ensure it fills the width
+    (for entry in cava_data
+      (box :class "visualizer-bar"
+           :valign "end"
+           :hexpand true   ;; Bars will stretch to fill horizontal space
+           :height entry))))  

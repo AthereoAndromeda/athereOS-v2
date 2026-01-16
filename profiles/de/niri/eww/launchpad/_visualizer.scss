@@ -1,0 +1,67 @@
+$top-bar-alpha: 1;
+
+$main-color1: rgba(214, 2, 112, $top-bar-alpha);
+$main-color2: rgba(155, 79, 150, $top-bar-alpha);
+$main-color3: rgba(0, 56, 168, $top-bar-alpha);
+
+$main-gradient: linear-gradient(to right,
+    $main-color1,
+    $main-color2,
+    $main-color3);
+
+
+
+.launchpad {
+  
+  &__visualizer {
+    padding: 10px;
+
+    /* background: rgba(0, 0, 0, 0.5); */
+    &.background {
+      background: none;
+    }
+
+    
+  }
+
+  &__cava-container {
+    padding: 0 10px;
+    /* background: rgba(0, 0, 0, 0.2); */
+    border-radius: 8px;
+  }
+
+  &__visualizer-bar {
+    /* This creates a gradient from bottom (green) to top (red) */
+    /* Even when the bar is short, it will show the bottom of the gradient */
+    padding: 10px;
+    margin: 0 {
+      left: 1px;
+      right: 1px;
+    }
+    //background: linear-gradient(to top,
+    //rgb(80, 250, 123) 0%,    /* Green at bottom */
+    //rgb(241, 250, 140) 50%,  /* Yellow in middle */
+    //rgb(255, 85, 85) 100%    /* Red at top */
+    //);  
+
+    background: linear-gradient(to bottom,
+        /* rgb(72, 0, 255) 0%, */
+        /* Deep Electric Blue/Purple at bottom */
+        /* rgb(157, 0, 255) 50%, */
+        /* Mid-tone Royal Purple */
+        /* rgb(255, 0, 255) 100% */
+        /* Bright Magenta/Violet at top */
+
+        $main-color1 0%,
+        $main-color2 50%,
+        $main-color3 100%,
+      );
+    /* Fix the background so the colors stay in the same place regardless of height */
+    /* background-attachment: fixed; */
+
+    border-radius: 2px 2px 0 0;
+    transition: 30ms height ease-out;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+  }
+}
+

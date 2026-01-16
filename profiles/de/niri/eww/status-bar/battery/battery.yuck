@@ -1,0 +1,46 @@
+(defpoll conservation_mode
+  :interval "3s"
+  `cat /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode`)
+
+(defvar battery-icons_normal '["󰁹","󰂁","󰁾","󱃍"]')
+(defvar battery-icons_charging '["󰂅","󰂊","󰢝","󰂆"]')
+
+(defwidget battery-widget__full []
+  (label
+    :visible {EWW_BATTERY["BAT0"].status == "Not charging"}
+    :class "battery-widget__full ${conservation_mode == 1 ? "conservation":""}"
+    :text "${conservation_mode == "1" ? "󱈑" : ""} ${EWW_BATTERY["BAT0"].capacity}% "
+))
+
+
+(defwidget battery-widget__text [icons visibility]
+  (label
+    :visible visibility
+    :text "${conservation_mode == 1 ? "󱈑": ""}${
+    EWW_BATTERY["BAT0"].capacity > 80 ? icons[0] :
+    EWW_BATTERY["BAT0"].capacity > 50 ? icons[1] :
+    EWW_BATTERY["BAT0"].capacity > 20 ? icons[2] : icons[3] } ${
+    EWW_BATTERY["BAT0"].capacity}%")
+)
+
+(defwidget battery-widget []
+  (eventbox
+    :timeout "10s"
+    :cursor "pointer"
+    :onclick "conservation-mode"
+    :class "battery battery-button ${
+      EWW_BATTERY["BAT0"].capacity <= 20 ? "battery_low" : ""} ${
+      conservation_mode == 1 ? "battery_conservation" : ""}"
+
+    (box
+      (battery-widget__text
+        :icons battery-icons_normal
+        :visibility {EWW_BATTERY["BAT0"].status == "Discharging"})
+      (battery-widget__text
+        :icons battery-icons_charging
+        :visibility {EWW_BATTERY["BAT0"].status == "Charging"})
+      (battery-widget__full
+        :visibility {EWW_BATTERY["BAT0"].status == "Not charging"})
+    )
+  )
+)

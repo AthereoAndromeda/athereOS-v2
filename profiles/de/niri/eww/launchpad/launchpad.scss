@@ -1,0 +1,83 @@
+@use "_visualizer.scss";
+
+$top-bar-alpha: 0.75;
+
+.launchpad {
+  &.background {
+    background: none;
+  }
+
+  &__container {
+    background: none;
+    color: rgba(200, 200, 200, 1);
+  
+    text-shadow:
+      0 0 5px #ffffff,
+      /* Small, sharp glow */
+      0 0 10px #ffffff;
+      /* Medium glow */
+      /* 0 0 20px #ffffff; */
+
+    font: {
+      family: "Aquire, light";
+      size: 5em;
+      weight: bold;
+      /* weight: light; */
+    }
+  }
+}
+
+.launchpad__time-widget {
+  color: rgba(250, 250, 250, 0.5);
+  padding: 20px;
+  background: none;
+  /* color: black; */
+  font-family: "Aquire";
+  font-size: 20px;
+  font-weight: bold;
+  text-shadow:
+    0 0 5px #ec38bc,
+    /* Small, sharp glow */
+    0 0 8px #ec38bc,
+    /* Medium glow */
+    0 0 10px #ec38bc,
+    /* Wide, soft glow */
+    0 0 15px #ec38bc;
+  /* Very broad radiance */
+
+}
+
+
+.calendar {
+  font-size: 10px;
+  font-family: Ubuntu;
+  text-shadow: 0 0 1px black;
+  padding: 10px;
+  margin: 10px;
+}
+
+
+.glow-text {
+  color: #fff;
+  /* White text creates the "bright core" */
+  /* text-shadow: 0 0 10px $glow-color; */
+  text-shadow:
+    0 0 5px #ec38bc,
+    /* Small, sharp glow */
+    0 0 10px #ec38bc,
+    /* Medium glow */
+    0 0 20px #ec38bc,
+    /* Wide, soft glow */
+    0 0 40px #ec38bc;
+  /* Very broad radiance */
+
+  /* animation: pulse 1.5s infinite alternate; */
+}
+
+$glow-color: rgba(236, 56, 188, 0.6);
+
+
+.backlit {
+  /* color: #1a1a1a; */
+  text-shadow: 0 0 8px rgba(115, 3, 192, 0.8);
+}

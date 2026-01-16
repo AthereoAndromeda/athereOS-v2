@@ -1,0 +1,16 @@
+(deflisten volume-stat
+  :initial "100"
+  `./status-bar/volume/volume.nu`)
+
+
+(defwidget volume []
+  (eventbox
+    :timeout "700ms"
+    :cursor "pointer"
+    :onscroll "./status-bar/volume/volume.nu change-vol {}"
+    :onclick  "./status-bar/volume/volume.nu mute"
+    
+    (box
+      :class "volume ${volume-stat == "muted" ? "muted" : ""}"
+      "${volume-stat == "muted" ? "" : ""}  ${volume-stat != "muted" ? "${volume-stat}%" : ""}"))
+)

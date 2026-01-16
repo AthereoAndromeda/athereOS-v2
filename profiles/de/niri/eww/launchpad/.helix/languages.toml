@@ -1,0 +1,13 @@
+# Define the language server
+[language-server.vscode-css-language-server]
+command = "vscode-css-language-server"
+args = ["--stdio"]
+
+# Configure SCSS to use it
+[[language]]
+name = "scss"
+scope = "source.scss"
+injection-regex = "scss"
+file-types = ["scss"]
+language-servers = [ "vscode-css-language-server" ]
+indent = { tab-width = 2, unit = " " }

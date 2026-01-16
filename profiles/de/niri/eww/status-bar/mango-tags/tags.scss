@@ -1,0 +1,87 @@
+@use "../base" as b;
+
+// Define these in your variables file
+$active-color1: rgba(255, 46, 150, 1); // Brighter Magenta
+$active-color2: rgba(200, 100, 210, 1); // Brighter Purple
+$active-color3: rgba(50, 130, 255, 1); // Brighter Blue
+
+$active-gradient: linear-gradient(-45deg,
+    $active-color1,
+    $active-color2,
+    $active-color3);
+
+$inactive-alpha: 0.4;
+
+.tag {
+  &__button {
+    @include b.get_gradient(45deg, 0.45);
+    /* background: b.$main-gradient-45deg; */
+    /* background: b.get_gradient(45deg, 0.60); */
+    font-size: 20px;
+    color: rgba(100,100, 100, 0.8);
+    /* color: red; */
+    border: 3px solid rgba(180, 180, 180, $inactive-alpha);
+    border-bottom: 0;
+    min-width: 0;
+    min-height: 0;
+    transition: 0.3s;
+
+    margin: 0 {
+      left: 5px;
+      right: 5px;
+    }
+
+    padding: 0 {
+      right: 5px;
+      left: 5px;
+    }
+
+    border-radius: 10px;
+    /* transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); */
+
+    transition: 0.3s;
+
+
+    &.active {
+      @include b.glow_text(#FF00FF);
+    @include b.get_gradient(45deg, 1.0);
+      border-width: 4px;
+      border-color: lightskyblue;
+
+      font-size: 1.2em;
+
+      background: $active-gradient;
+      color: #fff;
+      box-shadow: 0 0 8px rgba(214, 2, 112, 0.9);
+      /* transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); */
+      transition: 0.3s;
+    }
+  }
+
+  &__header {
+    margin-left: 7px;
+
+    &.active {
+      @include b.glow_text(orange); // TODO: Change to mint green compleawoawfoji
+    }
+  }
+
+  &__body {
+    font-family: "Jetbrains Mono Nerd Font";
+    font-size: 0.8em;
+    min-width: 30px;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    /* transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); */
+  }
+
+  &__container {
+    min-width: 30px;
+  }
+
+  &__keymode-container {
+    color: rgba(200, 200, 200, 1)
+    /* color: red; */
+  }
+}
