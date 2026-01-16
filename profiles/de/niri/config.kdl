@@ -31,7 +31,7 @@ input {
     touchpad {
         // off
         tap
-        // dwt
+        dwt
         // dwtp
         // drag false
         // drag-lock
@@ -74,12 +74,13 @@ input {
         map-to-output "eDP-1"
         // calibration-matrix 1.0 0.0 0.0 0.0 1.0 0.0
     }
+
     // Uncomment this to make the mouse warp to the center of newly focused windows.
-    // warp-mouse-to-focus
+    warp-mouse-to-focus
 
     // Focus windows and outputs automatically when moving the mouse into them.
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
-    focus-follows-mouse max-scroll-amount="95%"
+    focus-follows-mouse max-scroll-amount="100%"
 }
 
 // You can configure outputs by their name, which you can find
@@ -125,6 +126,7 @@ output "eDP-1" {
 layout {
     // Set gaps around windows in logical pixels.
     gaps 16
+    background-color "transparent"
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -132,7 +134,7 @@ layout {
     // - "always", the focused column will always be centered.
     // - "on-overflow", focusing a column will center it if it doesn't fit
     //   together with the previously focused column.
-    center-focused-column "never"
+    center-focused-column "on-overflow"
 
     // You can customize the widths that "switch-preset-column-width" (Mod+R) toggles between.
     preset-column-widths {
@@ -142,13 +144,26 @@ layout {
         proportion 0.33333
         proportion 0.5
         proportion 0.66667
+        proportion 0.8 // 4/5
 
         // Fixed sets the width in logical pixels exactly.
         // fixed 1920
     }
 
+    insert-hint {
+        // off
+        // color "#ffc87f80"
+        color "#7fc8ff80"
+        // gradient from="#ffbb6680" to="#ffc88080" angle=45 relative-to="workspace-view"
+    }
+
     // You can also customize the heights that "switch-preset-window-height" (Mod+Shift+R) toggles between.
-    // preset-window-heights { }
+    preset-window-heights {        
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        proportion 1.0
+    }
 
     // You can change the default width of the new windows.
     default-column-width { proportion 0.5; }
@@ -159,10 +174,6 @@ layout {
     // behind windows. That is, they will show up through semitransparent windows.
     // This is because windows using client-side decorations can have an arbitrary shape.
     //
-    // If you don't like that, you should uncomment `prefer-no-csd` below.
-    // Niri will draw focus ring and border *around* windows that agree to omit their
-    // client-side decorations.
-    //
     // Alternatively, you can override it with a window rule called
     // `draw-border-with-background`.
 
@@ -172,7 +183,7 @@ layout {
         // off
 
         // How many logical pixels the ring extends out from the windows.
-        width 3
+        width 4
 
         // Colors can be set in a variety of ways:
         // - CSS named colors: "red"
@@ -180,13 +191,13 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#7fc8ff"
+        // active-color "#7fc8ff"
 
         // Color of the ring on inactive monitors.
         //
         // The focus ring only draws around the active window, so the only place
         // where you can see its inactive-color is on other monitors.
-        inactive-color "#505050"
+        // inactive-color "#505050"
 
         // You can also use gradients. They take precedence over solid colors.
         // Gradients are rendered the same as CSS linear-gradient(angle, from, to).
@@ -195,20 +206,20 @@ layout {
         // You can use any CSS linear-gradient tool on the web to set these up.
         // Changing the color space is also supported, check the wiki for more info.
         //
-        // active-gradient from="#80c8ff" to="#c7ff7f" angle=45
+        // active-gradient from="#80c8ff" to="#c7ff7f" angle=45 in="oklab"
+        active-gradient from="#d60270" to="#0038a8" angle=45 in="oklab" relative-to="workspace-view"
 
         // You can also color the gradient relative to the entire view
         // of the workspace, rather than relative to just the window itself.
         // To do that, set relative-to="workspace-view".
-        //
-        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+        inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
     }
 
     // You can also add a border. It's similar to the focus ring, but always visible.
     border {
         // The settings are the same as for the focus ring.
         // If you enable the border, you probably want to disable the focus ring.
-        // off
+        off
 
         width 2
         active-color "#ffc87f"
@@ -227,9 +238,7 @@ layout {
 
     // You can enable drop shadows for windows.
     shadow {
-        // Uncomment the next line to enable shadows.
-        // on
-
+        on
         // By default, the shadow draws only around its window, and not behind it.
         // Uncomment this setting to make the shadow draw behind its window.
         //
@@ -238,7 +247,7 @@ layout {
         // shadow artifacts inside the CSD rounded corners. This setting fixes
         // those artifacts.
         //
-        // However, instead you may want to set prefer-no-csd and/or
+        // However, instead you may want to set prefer-no-csd andor
         // geometry-corner-radius. Then, niri will know the corner radius and
         // draw the shadow correctly, without having to draw it behind the
         // window. These will also remove client-side shadows if the window
@@ -256,7 +265,7 @@ layout {
         spread 5
 
         // Offset moves the shadow relative to the window.
-        offset x=0 y=5
+        offset x=3 y=5
 
         // You can also change the shadow color and opacity.
         color "#0007"
@@ -276,11 +285,15 @@ layout {
 
     tab-indicator {
         width 8
-        gap 8
-        gaps-between-tabs 3
-        length total-proportion=0.8
-        // position "top"
-        // place-within-column
+        gap 6
+        gaps-between-tabs 4
+        length total-proportion=0.85
+        corner-radius 5
+        position "top"
+        place-within-column
+
+        // active-gradient from="#d60270" to="#0038a8" in="oklch longer hue"
+        inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
     }
 }
 
@@ -302,7 +315,33 @@ spawn-at-startup "wl-paste --type image --watch cliphist store"
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
-    // skip-at-startup
+    skip-at-startup
+}
+
+
+// Put swaybg inside the overview backdrop.
+layer-rule {
+    match namespace="^wpaperd-eDP-1$"
+    place-within-backdrop true
+}
+
+cursor {
+    // TODO: Modularize
+    xcursor-theme "LyraQ-cursors"
+    xcursor-size 48
+}
+
+overview {
+    zoom 0.5
+    // backdrop-color "#262626"
+
+    workspace-shadow {
+        // off
+        softness 40
+        spread 10
+        offset x=10 y=10
+        color "#00000090"
+    }
 }
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
@@ -310,7 +349,7 @@ hotkey-overlay {
 // Additionally, clients will be informed that they are tiled, removing some client-side rounded corners.
 // This option will also fix border/focus ring drawing behind some semitransparent windows.
 // After enabling or disabling this, you need to restart the apps for this to take effect.
-// prefer-no-csd
+prefer-no-csd
 
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.
@@ -329,6 +368,8 @@ animations {
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
     // slowdown 3.0
+
+    
 }
 
 // Window rules let you adjust behavior for individual windows.
@@ -352,6 +393,21 @@ window-rule {
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
+    default-column-width { fixed 512; }
+    default-window-height { fixed 288; }
+    open-focused false
+    default-floating-position x=100 y=100 relative-to="top-left"
+}
+
+// Open the Zen Browser picture-in-picture player as floating by default.
+window-rule {
+    // This app-id regular expression will work for both:
+    match app-id=r#"^zen-beta$"# title="^Picture-in-Picture$"
+    open-floating true
+    default-column-width { fixed 720; }
+    default-window-height { fixed 405; }
+    open-focused false
+    default-floating-position x=100 y=100 relative-to="top-left"
 }
 
 // Example: block out two password managers from screen capture.
@@ -366,8 +422,15 @@ window-rule {
     // block-out-from "screencast"
 }
 
+window-rule {
+    match app-id=r#"^askpass$"#
+    open-floating true
+    default-column-width { proportion 0.75; }
+    default-window-height { fixed 500; }
+    block-out-from "screen-capture"
+}
+
 // Example: enable rounded corners for all windows.
-// (This example rule is commented out with a "/-" in front.)
 window-rule {
     geometry-corner-radius 5
     clip-to-geometry true
@@ -388,13 +451,14 @@ binds {
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-    Mod+Space { spawn-sh "rofi -show drun"; }
-    // Mod+Q { spawn "wezterm"; }
+    Mod+D { spawn-sh "rofi -show drun"; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T hotkey-overlay-title="Open a Terminal: wezterm" { spawn "wezterm"; }
-    Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: hyprlock" { spawn "hyprlock"; }
+    Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+    Mod+E hotkey-overlay-title="Run an Application: Zen Browser" { spawn "zen-beta"; }
+    Mod+Alt+L hotkey-overlay-title="Lock the Screen" { spawn-sh "loginctl lock-session"; }
+    Mod+P hotkey-overlay-title="Toggle swaync-client" { spawn-sh "swaync-client -t"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
@@ -426,7 +490,7 @@ binds {
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,
     // or do a four-finger swipe up on a touchpad.
-    Mod+O repeat=false { toggle-overview; }
+    Mod+Slash repeat=false { toggle-overview; }
 
     Mod+Q repeat=false { close-window; }
 
@@ -490,6 +554,10 @@ binds {
     Mod+Page_Up        { focus-workspace-up; }
     Mod+U              { focus-workspace-down; }
     Mod+I              { focus-workspace-up; }
+    Mod+Alt+Down       { focus-workspace-down; }
+    Mod+Alt+Up         { focus-workspace-up; }
+    Mod+Ctrl+Alt+Down  { move-column-to-workspace-down; }
+    Mod+Ctrl+Alt+Up    { move-column-to-workspace-up; }
     Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
     Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
     Mod+Ctrl+U         { move-column-to-workspace-down; }
@@ -585,18 +653,18 @@ binds {
     // Mod+R { switch-preset-column-width-back; }
     Mod+Shift+R { switch-preset-window-height; }
     Mod+Ctrl+R { reset-window-height; }
-    Mod+F { maximize-column; }
-    Mod+Shift+F { fullscreen-window; }
+    Mod+F repeat=false { maximize-column; }
+    Mod+Shift+F repeat=false { fullscreen-window; }
 
     // While maximize-column leaves gaps and borders around the window,
     // maximize-window-to-edges doesn't: the window expands to the edges of the screen.
     // This bind corresponds to normal window maximizing,
     // e.g. by double-clicking on the titlebar.
-    Mod+M { maximize-window-to-edges; }
+    Mod+M repeat=false { maximize-window-to-edges; }
 
     // Expand the focused column to space not taken up by other fully visible columns.
     // Makes the column "fill the rest of the space".
-    Mod+Ctrl+F { expand-column-to-available-width; }
+    Mod+Ctrl+F repeat=false { expand-column-to-available-width; }
 
     Mod+C { center-column; }
 
@@ -650,8 +718,7 @@ binds {
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
     // The quit action will show a confirmation dialog to avoid accidental exits.
-    Mod+Shift+E { quit; }
-    Ctrl+Alt+Delete { quit; }
+    Mod+Alt+Delete { quit; }
 
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
