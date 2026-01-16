@@ -13,6 +13,7 @@ in {
         "bluetooth"
         "cups"
         "greetd"
+        "regreet"
       ]
       ++
       # /etc dirs
