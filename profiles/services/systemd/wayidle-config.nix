@@ -53,7 +53,7 @@
 
   systemd.user.services.wayidle-lock = {
     Unit = {
-      Description = "Lock screen after 5 minutes";
+      Description = "Lock screen after 8 minutes";
       PartOf = ["graphical-session.target"];
       After = ["graphical-session.target"];
     };
@@ -69,14 +69,14 @@
 
       ExecStart = "${pkgs.writeShellScript "wayidle-lock" ''
         #!/usr/bin/env bash
-        ${lib.getExe pkgs.wayidle} -t 300 pidof ${lib.getExe pkgs.hyprlock} || ${lib.getExe pkgs.hyprlock}
+        ${lib.getExe pkgs.wayidle} -t 480 pidof ${lib.getExe pkgs.hyprlock} || ${lib.getExe pkgs.hyprlock}
       ''}";
     };
   };
 
   systemd.user.services.wayidle-brightness = {
     Unit = {
-      Description = "Lower brightness after 3 minutes";
+      Description = "Lower brightness after 5 minutes";
       PartOf = ["graphical-session.target"];
       After = ["graphical-session.target"];
     };
@@ -92,7 +92,7 @@
 
       ExecStart = "${pkgs.writeShellScript "wayidle-brightness" ''
         #!/usr/bin/env bash
-        ${lib.getExe pkgs.wayidle} -t 180 ${lib.getExe pkgs.brightnessctl} set 5
+        ${lib.getExe pkgs.wayidle} -t 300 ${lib.getExe pkgs.brightnessctl} set 5
       ''}";
     };
   };
