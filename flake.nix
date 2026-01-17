@@ -42,6 +42,9 @@
 
     nuenv.url = "github:DeterminateSystems/nuenv";
     nuenv.inputs.nixpkgs.follows = "nixpkgs";
+
+    gazelle.url = "github:Zeus-Deus/gazelle-tui";
+    gazelle.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {

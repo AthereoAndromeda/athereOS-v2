@@ -7,6 +7,7 @@
 }: {
   imports = [
     inputs.xdg-termfilepickers.homeManagerModules.default
+    inputs.gazelle.homeModules.gazelle
     # inputs.mango.hmModules.mango
     ./packages # Auto-imports all .nix files in packages/
     ./services
@@ -18,6 +19,13 @@
     ./de/niri/niri.nix
     # ./de/mango/mango.nix
   ];
+
+  programs.gazelle = {
+    enable = true;
+    settings = {
+      theme = "rose-pine-moon";
+    };
+  };
 
   dconf.settings = {
     "org/gnome/desktop/interface".color-scheme = "prefer-dark";
@@ -64,6 +72,8 @@
     fend
     grim
     slurp
+
+    inputs.gazelle.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   home.sessionVariables = {
