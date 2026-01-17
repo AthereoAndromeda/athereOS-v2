@@ -7,10 +7,17 @@
     # useDefaultShell = false;
     extraGroups = [
       "wheel"
-      "libvirtd"
-      "dialout"
+      "audio"
       "video"
       "render"
+      "cdrom"
+      "adm" # /var/log access
+      "lpadmin" # Printer
+
+      "plugdev" # Hot-pluggables (JTAG)
+      "libvirtd" # Virt-manager
+      "dialout" # Serial Port
+      "uucp"
     ];
 
     hashedPasswordFile = "/persist/password/athereo";
