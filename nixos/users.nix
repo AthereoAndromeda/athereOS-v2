@@ -1,4 +1,9 @@
 {pkgs, ...}: {
+  # Define a plugdev group
+  users.groups = {
+    plugdev.gid = 1000;
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.mutableUsers = false;
   users.users.athereo = {
