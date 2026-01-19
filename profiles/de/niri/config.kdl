@@ -373,6 +373,14 @@ animations {
     workspace-switch {
         spring damping-ratio=0.75 stiffness=750 epsilon=0.001
     }
+
+    horizontal-view-movement {
+        spring damping-ratio=0.9 stiffness=800 epsilon=0.0001
+    }
+
+    window-movement {
+        spring damping-ratio=0.9 stiffness=800 epsilon=0.0001
+    }
 }
 
 // Window rules let you adjust behavior for individual windows.
@@ -436,7 +444,7 @@ window-rule {
 window-rule {
     match app-id=r#"^askpass$"#
     open-floating true
-    default-column-width { proportion 0.75; }
+    default-column-width { proportion 0.25; }
     default-window-height { fixed 500; }
     block-out-from "screen-capture"
 }
@@ -468,10 +476,11 @@ binds {
     Mod+T hotkey-overlay-title="Open a Terminal: wezterm" { spawn "wezterm"; }
     Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Mod+E hotkey-overlay-title="Run an Application: Zen Browser" { spawn "zen-beta"; }
-    Mod+Alt+L hotkey-overlay-title="Lock the Screen" { spawn-sh "loginctl lock-session"; }
     Mod+P hotkey-overlay-title="Toggle swaync-client" { spawn-sh "swaync-client -t"; }
-    Mod+B hotkey-overlay-title="Show clipboard history" { spawn-sh "wezterm start --class cliphist -- fzf-cliphist"; }
+    Mod+V hotkey-overlay-title="Show clipboard history" { spawn-sh "wezterm start --class cliphist -- fzf-cliphist"; }
 
+    Mod+Alt+L hotkey-overlay-title="Lock the Screen" { spawn-sh "loginctl lock-session"; }
+    Mod+Alt+P hotkey-overlay-title="Suspend session" { spawn-sh "notify-send 'Suspending...'; systemctl suspend"; }
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
     // For example, this is a standard bind to toggle the screen reader (orca).
@@ -643,6 +652,9 @@ binds {
     Mod+Ctrl+8 { move-column-to-workspace 8; }
     Mod+Ctrl+9 { move-column-to-workspace 9; }
 
+    Mod+S { focus-workspace "office"; }
+    Mod+Ctrl+S { move-column-to-workspace "office"; }
+
     // Alternatively, there are commands to move just a single window:
     // Mod+Ctrl+1 { move-window-to-workspace 1; }
 
@@ -699,8 +711,8 @@ binds {
     Mod+Shift+Equal { set-window-height "+10%"; }
 
     // Move the focused window between the floating and the tiling layout.
-    Mod+V       { toggle-window-floating; }
-    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+    Mod+X       { toggle-window-floating; }
+    Mod+Shift+X { switch-focus-between-floating-and-tiling; }
 
     // Toggle tabbed column display mode.
     // Windows in this column will appear as vertical tabs,
@@ -735,4 +747,25 @@ binds {
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
+}
+
+workspace "office" {
+    // Layout config overrides just for this named workspace.
+    layout {
+        always-center-single-column
+        gaps 32
+        default-column-width { proportion 1.0; }
+
+        struts {
+            left 10
+            right 10
+            bottom 10
+            top 5
+        }
+
+        border {
+            on
+            width 4
+        }
+    }
 }
