@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   # Define a plugdev group
   users.groups = {
-    plugdev.gid = 1000;
+    plugdev.gid = 601; # System Group
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
