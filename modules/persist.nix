@@ -61,9 +61,11 @@ in {
 
           ".julia"
           ".zen"
+          ".thunderbird"
           ".gnupg"
           ".ssh"
           ".minecraft"
+          ".cargo"
         ]
         ++
         # Config dirs
