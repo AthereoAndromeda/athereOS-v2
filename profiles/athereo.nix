@@ -68,6 +68,7 @@
   home.homeDirectory = "/home/athereo";
   home.packages = with pkgs; [
     zen-browser
+    thunderbird-latest
     xh
     fend
     grim
@@ -87,14 +88,6 @@
     package = pkgs.lyra-cursors;
     name = config.home.sessionVariables.XCURSOR_THEME;
     size = config.home.sessionVariables.XCURSOR_SIZE;
-  };
-
-  programs.thunderbird = {
-    enable = true;
-
-    profiles.athereo = {
-      isDefault = true;
-    };
   };
 
   programs.zoxide.enable = true;
