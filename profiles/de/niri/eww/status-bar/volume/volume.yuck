@@ -1,5 +1,5 @@
 (deflisten volume-stat
-  :initial "100"
+  :initial ""
   `./status-bar/volume/volume.nu`)
 
 
@@ -12,5 +12,5 @@
     
     (box
       :class "volume ${volume-stat == "muted" ? "muted" : ""}"
-      "${volume-stat == "muted" ? "" : ""}  ${volume-stat != "muted" ? "${volume-stat}%" : ""}"))
+      "${volume-stat == "muted" ? "" : ""}  ${volume-stat}%"))
 )

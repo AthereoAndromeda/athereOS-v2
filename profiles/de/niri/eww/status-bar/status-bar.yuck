@@ -1,7 +1,6 @@
 (include "./status-bar/visualizer/visualizer.yuck")
 (include "./status-bar/battery/battery.yuck")
 (include "./status-bar/volume/volume.yuck")
-; (include "./status-bar/mango-tags/tags.yuck")
 
 (defpoll time
   :interval "1s"

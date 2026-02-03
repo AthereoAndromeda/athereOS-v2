@@ -30,7 +30,8 @@
     :onclick "conservation-mode"
     :class "battery battery-button ${
       EWW_BATTERY["BAT0"].capacity <= 20 ? "battery_low" : ""} ${
-      conservation_mode == 1 ? "battery_conservation" : ""}"
+      conservation_mode == 1 ? "battery_conservation" : ""} ${
+      EWW_BATTERY["BAT0"].status == "Charging" ? "charging" : ""}"
 
     (box
       (battery-widget__text
