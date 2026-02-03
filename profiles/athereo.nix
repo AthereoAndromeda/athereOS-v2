@@ -73,6 +73,7 @@
     fend
     grim
     slurp
+    wl-mirror
 
     inputs.gazelle.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
@@ -80,6 +81,9 @@
   home.sessionVariables = {
     XCURSOR_THEME = "LyraQ-cursors";
     XCURSOR_SIZE = "48";
+    NIXOS_OZONE_WL = "1";
+
+    XDG_PICTURES_DIR = "/home/athereo/Pictures";
   };
 
   home.pointerCursor = {
