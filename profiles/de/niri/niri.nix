@@ -1,11 +1,17 @@
-{pkgs, ...}: let
-  inherit (builtins) readFile;
-in {
+{pkgs, ...}: {
   imports = [
-    ./quickshell
+    # ./quickshell
   ];
 
-  programs.niri.config = readFile ./config.kdl;
-
   programs.fuzzel.enable = true;
+
+  xdg.configFile."eww" = {
+    recursive = true;
+    source = ./eww;
+  };
+
+  xdg.configFile."niri" = {
+    recursive = true;
+    source = ./niri-config;
+  };
 }
