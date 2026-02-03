@@ -5,6 +5,7 @@ alias fmt := format
 alias s := switch
 alias t := test
 alias b := boot
+alias tb := test-and-boot
 alias l := list
 alias td := test-debug
 alias up := update
@@ -35,6 +36,10 @@ test: format _git-add
 [group('build')]
 boot: format _git-add
      sudo nixos-rebuild --flake . boot
+
+# Alias for just test && just boot
+[group('build')]
+test-and-boot: test boot
 
 # Build in `test` mode, with lots of debug flags
 [group('build')]
