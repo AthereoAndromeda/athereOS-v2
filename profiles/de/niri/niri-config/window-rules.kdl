@@ -31,7 +31,7 @@ window-rule {
     default-column-width { fixed 720; }
     default-window-height { fixed 405; }
     open-focused false
-    default-floating-position x=100 y=100 relative-to="top-left"
+    default-floating-position x=50 y=60 relative-to="top-right"
 }
 
 window-rule {
