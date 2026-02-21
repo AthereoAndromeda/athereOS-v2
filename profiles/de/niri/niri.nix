@@ -1,7 +1,20 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     # ./quickshell
   ];
+
+  home.packages = [pkgs.xwayland-satellite-unstable pkgs.nirius];
+
+  programs.niri.settings = {
+    xwayland-satellite = {
+      enable = true;
+      path = lib.getExe pkgs.xwayland-satellite-unstable;
+    };
+  };
 
   programs.fuzzel.enable = true;
 
