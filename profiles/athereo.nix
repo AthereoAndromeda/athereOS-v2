@@ -68,6 +68,7 @@
   home.homeDirectory = "/home/athereo";
   home.packages = with pkgs; [
     zen-browser
+    chromium
     thunderbird-latest
     xh
     fend
