@@ -15,8 +15,10 @@ spawn-at-startup "wpaperd"
 spawn-at-startup "swaync"
 spawn-at-startup "wl-paste --type text --watch cliphist store"
 spawn-at-startup "wl-paste --type image --watch cliphist store"
-spawn-sh-at-startup "sleep 5; eww -c ~/.config/eww open status-bar" 
+spawn-sh-at-startup "sleep 3; eww -c ~/.config/eww open status-bar" 
 spawn-sh-at-startup "niri msg action focus-workspace main"
+
+spawn-at-startup "thunderbird"
 
 include "window-rules.kdl"
 
