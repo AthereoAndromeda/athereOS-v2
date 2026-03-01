@@ -1,6 +1,4 @@
-{...}: let
-  inherit (builtins) map;
-in {
+{...}: {
   environment.persistence."/persist" = {
     hideMounts = true;
     directories =
@@ -74,6 +72,7 @@ in {
           "age"
           "vesktop"
           "direnv"
+          "Caprine"
         ]
         ++
         # .local/share dirs
