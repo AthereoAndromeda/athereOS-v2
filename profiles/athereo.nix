@@ -83,6 +83,7 @@
     XCURSOR_THEME = "LyraQ-cursors";
     XCURSOR_SIZE = "48";
     NIXOS_OZONE_WL = "1";
+    _JAVA_AWT_WM_NONREPARENTING = "1"; # Fixes logisim-evolution being a blank white screen
 
     XDG_PICTURES_DIR = "/home/athereo/Pictures";
   };
