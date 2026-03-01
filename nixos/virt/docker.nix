@@ -1,8 +1,8 @@
 {...}: {
-  # virtualisation.docker = {
-  #   enable = true;
-  #   storageDriver = "btrfs";
-  # };
+  virtualisation.docker = {
+    enable = true;
+    storageDriver = "btrfs";
+  };
   # virtualisation.docker = {
   #   # Consider disabling the system wide Docker daemon
   #   enable = false;
