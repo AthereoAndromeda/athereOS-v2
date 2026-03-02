@@ -81,6 +81,7 @@
           "navi"
           "keyrings"
           "direnv"
+          "Anki2"
         ];
 
       files = [
