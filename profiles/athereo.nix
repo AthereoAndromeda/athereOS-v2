@@ -12,6 +12,7 @@
     ./packages # Auto-imports all .nix files in packages/
     ./services
     ./scripts
+    ./xdg.nix
 
     # ./de/gnome/dconf.nix
     # ./de/hyprland/hypr.nix
@@ -30,39 +31,6 @@
   dconf.settings = {
     "org/gnome/desktop/interface".color-scheme = "prefer-dark";
   };
-
-  # Enable base dirs
-  xdg.enable = true;
-
-  # TODO: fix XDG Portals
-  xdg.portal.enable = true;
-  xdg.portal.xdgOpenUsePortal = true;
-  xdg.portal.extraPortals = with pkgs; [
-    xdg-desktop-portal-gtk
-    xdg-desktop-portal-wlr
-    # xdg-desktop-portal-termfilechooser
-  ];
-
-  xdg.portal.config = {
-    common = {
-      default = "gtk";
-
-      # Use the 'wlr' portal for screen sharing/specific wayland tasks
-      "org.freedesktop.impl.portal.Screenshot" = ["wlr"];
-      "org.freedesktop.impl.portal.ScreenCast" = ["wlr"];
-      "org.freedesktop.impl.portal.Secret" = "gnome-keyring";
-    };
-  };
-
-  # services.xdg-desktop-portal-termfilepickers = let
-  #   termfilepickers = inputs.xdg-termfilepickers.packages.${pkgs.stdenv.hostPlatform.system}.default;
-  # in {
-  #   enable = true;
-  #   package = termfilepickers;
-  #   config = {
-  #     terminal_command = [(lib.getExe pkgs.ghostty) "--title=filepicker" "-e"];
-  #   };
-  # };
 
   home.stateVersion = "25.05";
   home.homeDirectory = "/home/athereo";
@@ -85,7 +53,7 @@
     NIXOS_OZONE_WL = "1";
     _JAVA_AWT_WM_NONREPARENTING = "1"; # Fixes logisim-evolution being a blank white screen
 
-    XDG_PICTURES_DIR = "/home/athereo/Pictures";
+    # XDG_PICTURES_DIR = "/home/athereo/Pictures";
   };
 
   home.pointerCursor = {
