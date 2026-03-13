@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   programs.nushell = {
     enable = true;
     environmentVariables = config.home.sessionVariables;
@@ -14,5 +18,9 @@
       source ~/.just.nu
       source ~/.cache/.navi.nu
     '';
+
+    plugins = with pkgs.nushellPlugins; [
+      polars
+    ];
   };
 }
