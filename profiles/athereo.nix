@@ -43,6 +43,7 @@
     grim
     slurp
     wl-mirror
+    swappy
 
     inputs.gazelle.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
@@ -63,6 +64,9 @@
     name = config.home.sessionVariables.XCURSOR_THEME;
     size = config.home.sessionVariables.XCURSOR_SIZE;
   };
+
+  home.shell.enableBashIntegration = true;
+  home.shell.enableNushellIntegration = true;
 
   programs.zoxide.enable = true;
   programs.zoxide.enableBashIntegration = true;
