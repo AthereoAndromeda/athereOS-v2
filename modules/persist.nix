@@ -73,6 +73,7 @@
           "vesktop"
           "direnv"
           "Caprine"
+          "AFFiNE"
         ]
         ++
         # .local/share dirs
@@ -86,6 +87,7 @@
 
       files = [
         ".config/gnome-initial-setup-done"
+        ".config/nushell/history.txt"
       ];
     };
   };
