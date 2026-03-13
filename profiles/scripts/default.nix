@@ -30,6 +30,10 @@ in {
       name = "kb-backlight";
       script = readFile ./nu/kb-backlight.nu;
     })
+    (nuenv.writeScriptBin {
+      name = "niri-screenshot";
+      script = readFile ./nu/niri-screenshot.nu;
+    })
 
     (pkgs.writeShellScriptBin "delete-btrfs-subvolume" (readFile ./bash/delete-btrfs-subvolume.sh))
     askpass-bin
