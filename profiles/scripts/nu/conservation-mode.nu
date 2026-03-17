@@ -3,11 +3,13 @@
 let cv_path = "/sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode"
 
 def "main on" [] {
-  "1" | sudo -A tee $cv_path
+  # "1" | sudo -A tee $cv_path
+  "1" | pkexec --disable-internal-agent tee $cv_path
 }
 
 def "main off" [] {
-  "0" | sudo -A tee $cv_path
+  # "0" | sudo -A tee $cv_path
+  "0" | pkexec --disable-internal-agent tee $cv_path
 }
 
 def main [] {

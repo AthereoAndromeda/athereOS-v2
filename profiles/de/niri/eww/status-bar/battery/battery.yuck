@@ -27,7 +27,7 @@
   (eventbox
     :timeout "10s"
     :cursor "pointer"
-    :onclick "conservation-mode"
+    :onclick "conservation-mode &"
     :class "battery battery-button ${
       EWW_BATTERY["BAT0"].capacity <= 20 ? "battery_low" : ""} ${
       conservation_mode == 1 ? "battery_conservation" : ""} ${
