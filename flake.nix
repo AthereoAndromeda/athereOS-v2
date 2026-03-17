@@ -86,6 +86,7 @@
             nixpkgs.config.allowUnfreePredicate = pkg:
               builtins.elem (lib.getName pkg) [
                 "obsidian"
+                "zoom"
               ];
 
             nix.settings.experimental-features = ["nix-command" "flakes"];
