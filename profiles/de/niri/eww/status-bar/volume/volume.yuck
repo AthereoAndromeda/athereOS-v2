@@ -2,15 +2,29 @@
   :initial ""
   `./status-bar/volume/volume.nu`)
 
+(deflisten microphone-stat
+  :initial "00"
+  `./status-bar/volume/volume.nu microphone`)
+
 
 (defwidget volume []
   (eventbox
     :timeout "700ms"
     :cursor "pointer"
     :onscroll "./status-bar/volume/volume.nu change-vol {}"
-    :onclick  "./status-bar/volume/volume.nu mute"
+    :onclick  "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
     
     (box
-      :class "volume ${volume-stat == "muted" ? "muted" : ""}"
-      "${volume-stat == "muted" ? "" : ""}  ${volume-stat}%"))
+      :class "volume ${volume-stat == "MUTED" ? "muted" : ""}"
+      "${volume-stat == "MUTED" ? "" : ""}${volume-stat != "MUTED" ? "  ${volume-stat}%" : ""}"))
+)
+
+(defwidget microphone []
+  (eventbox
+    :timeout "500ms"
+    :cursor "pointer"
+    :onclick "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+    (box
+      :class "microphone ${microphone-stat == "MUTED" ? "mic-muted": ""}"
+      "${microphone-stat == "MUTED" ? "" : ""}" ))
 )

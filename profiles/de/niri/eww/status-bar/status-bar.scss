@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "visualizer/visualizer";
 @use "battery/battery";
 @use "volume/volume";
@@ -45,13 +46,10 @@ $glow-shadow-col: #ec38bc;
 }
 
 .systray {
-  margin: {
-    right: 10px;
-  }
-
-  /* background: black; */
-  background: rgba(50, 50, 50, 0.4);
-  box-shadow: 2px 2px 10px green;
+  background: color.change(pink, $alpha: 0.6);
+  box-shadow: 2px 2px 10px hotpink;
+  padding: 0;
+  margin: 0;
 
   border: {
     radius: 10px;

@@ -34,11 +34,11 @@
     :orientation "h"
     :halign "end"
     :class "right-side"
-    ; :hexpand true
     ; (scroll
     ;   :width 100
     ;   :hscroll true
-      (systray :orientation "h" :class "systray");)
+    (systray :orientation "h" :class "systray");)
+    (microphone)
     (volume)
 
     (battery-widget)));
