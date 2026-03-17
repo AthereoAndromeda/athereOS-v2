@@ -31,9 +31,6 @@
     legacy-launcher.url = "github:AthereoAndromeda/legacy-launcher-nix";
     legacy-launcher.inputs.nixpkgs.follows = "nixpkgs";
 
-    # mango.url = "github:DreamMaoMao/mango";
-    # mango.inputs.nixpkgs.follows = "nixpkgs";
-    #
     niri.url = "github:sodiboo/niri-flake";
     niri.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -71,16 +68,26 @@
         modules = [
           inputs.xdg-termfilepickers.nixosModules.default
 
-          # Add mango nixos module
-          # inputs.mango.nixosModules.mango
-
           # Configure Nix/pkgs
           {
             nixpkgs.overlays = [
               inputs.legacy-launcher.overlays.legacy-launcher
               inputs.nuenv.overlays.default
               inputs.niri.overlays.niri
+
+              # Use Lix
+              (final: prev: {
+                inherit
+                  (prev.lixPackageSets.stable)
+                  nixpkgs-review
+                  nix-eval-jobs
+                  nix-fast-build
+                  colmena
+                  ;
+              })
             ];
+
+            nix.package = pkgs.lixPackageSets.stable.lix;
 
             # Allow a select number of unfree pkgs
             nixpkgs.config.allowUnfreePredicate = pkg:
