@@ -21,6 +21,8 @@
     # ./de/mango/mango.nix
   ];
 
+  services.polkit-gnome.enable = true;
+
   programs.gazelle = {
     enable = true;
     settings = {
