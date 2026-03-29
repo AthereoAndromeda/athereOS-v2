@@ -1,3 +1,3 @@
 {pkgs, ...}: {
-  home.packages = [pkgs.legacy-launcher];
+  # home.packages = [pkgs.legacy-launcher];
 }

@@ -28,8 +28,8 @@
     xdg-termfilepickers.url = "github:guekka/xdg-desktop-portal-termfilepickers";
     xdg-termfilepickers.inputs.nixpkgs.follows = "nixpkgs";
 
-    legacy-launcher.url = "github:AthereoAndromeda/legacy-launcher-nix";
-    legacy-launcher.inputs.nixpkgs.follows = "nixpkgs";
+    # legacy-launcher.url = "github:AthereoAndromeda/legacy-launcher-nix";
+    # legacy-launcher.inputs.nixpkgs.follows = "nixpkgs";
 
     niri.url = "github:sodiboo/niri-flake";
     niri.inputs.nixpkgs.follows = "nixpkgs";
@@ -71,7 +71,7 @@
           # Configure Nix/pkgs
           {
             nixpkgs.overlays = [
-              inputs.legacy-launcher.overlays.legacy-launcher
+              # inputs.legacy-launcher.overlays.legacy-launcher
               inputs.nuenv.overlays.default
               inputs.niri.overlays.niri
 
