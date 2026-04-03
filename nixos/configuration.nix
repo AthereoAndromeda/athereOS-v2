@@ -92,6 +92,8 @@ in {
     gnome-settings-daemon
   ];
 
+  services.udisks2.enable = true;
+
   hardware.sensor.iio.enable = true;
   services.sysprof.enable = true;
 
