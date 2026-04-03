@@ -38,6 +38,7 @@
   home.homeDirectory = "/home/athereo";
   home.packages = with pkgs; [
     zen-browser
+    tor-browser
     chromium
     thunderbird-latest
     xh
