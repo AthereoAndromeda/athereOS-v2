@@ -94,6 +94,7 @@
               builtins.elem (lib.getName pkg) [
                 "obsidian"
                 "zoom"
+                "veracrypt"
               ];
 
             nix.settings.experimental-features = ["nix-command" "flakes"];
