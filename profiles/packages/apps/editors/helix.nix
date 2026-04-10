@@ -102,7 +102,7 @@
         "A-," = "goto_previous_buffer";
         "A-." = "goto_next_buffer";
         "A-q" = ":buffer-close";
-        "A-/" = "repeat_last_motion";
+        "A-/" = "remove_primary_selection";
         A-x = "extend_to_line_bounds";
         X = "select_line_above";
       };
