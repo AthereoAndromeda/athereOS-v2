@@ -18,6 +18,7 @@
       "cdrom"
       "adm" # /var/log access
       "lpadmin" # Printer
+      "input"
 
       "plugdev" # Hot-pluggables (JTAG)
       "libvirtd" # Virt-manager
