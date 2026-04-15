@@ -34,6 +34,9 @@
     niri.url = "github:sodiboo/niri-flake";
     niri.inputs.nixpkgs.follows = "nixpkgs";
 
+    noctalia.url = "github:noctalia-dev/noctalia-shell";
+    noctalia.inputs.nixpkgs.follows = "nixpkgs";
+
     jsonc2json-bin.url = "github:AthereoAndromeda/jsonc-to-json";
     jsonc2json-bin.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -57,6 +60,11 @@
     custom-modules = import ./modules {inherit nixpkgs pkgs inputs custom-utils;};
     inherit (custom-modules) grub-themes;
   in {
+    nixConfig = {
+      extra-substituters = ["https://noctalia.cachix.org"];
+      extra-trusted-public-keys = ["noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="];
+    };
+
     nixosConfigurations = {
       athereo-lenovo-nixos = lib.nixosSystem {
         inherit system;

@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    # ./quickshell
+    ./noctalia/noctalia.nix
   ];
 
   home.packages = [pkgs.xwayland-satellite-unstable pkgs.nirius];

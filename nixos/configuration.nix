@@ -22,6 +22,11 @@ in {
   # desktop-environment.gnome.enable = true;
   bootloader.grub.enable = true;
 
+  environment.systemPackages = with pkgs; [
+    quickshell
+    evtest
+    python3
+  ];
   # Note, if you use the NixOS module and have useUserPackages = true, make sure to add
   environment.pathsToLink = [
     "/share/xdg-desktop-portal"

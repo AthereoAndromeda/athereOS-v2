@@ -74,6 +74,7 @@
           "direnv"
           "Caprine"
           "AFFiNE"
+          "noctalia"
         ]
         ++
         # .local/share dirs
@@ -86,6 +87,7 @@
         ];
 
       files = [
+        ".face"
         ".config/gnome-initial-setup-done"
         ".config/nushell/history.txt"
       ];

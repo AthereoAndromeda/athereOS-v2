@@ -6,6 +6,7 @@
   ...
 }: {
   imports = [
+    inputs.noctalia.homeModules.default
     inputs.xdg-termfilepickers.homeManagerModules.default
     inputs.gazelle.homeModules.gazelle
     # inputs.mango.hmModules.mango

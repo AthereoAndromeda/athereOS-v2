@@ -17,6 +17,8 @@
     sttr
     pulseaudioFull
     timg
+    imagemagick
+    ffmpeg
 
     # TUI
     yazi
