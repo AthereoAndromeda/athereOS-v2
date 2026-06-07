@@ -1,6 +1,10 @@
 # AthereOS 2.0
 NixOS on my laptop
 
+# Archived
+Moved to [AthereOS v3.0](https://github.com/AthereoAndromeda/athereos-v3.git)
+
+
 # Overview
 Hardware is Lenovo Ideapad Flex 5 2-in-1
 
